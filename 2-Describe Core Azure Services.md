@@ -1,5 +1,8 @@
 # 2. Describe Core Azure Services (30-35%)
 
+> https://docs.microsoft.com/en-gb/learn/modules/define-core-azure-services-products/  
+> https://docs.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree
+
 ## 2.1. Describe the core Azure architectural components
 
 ### describe Regions
@@ -101,15 +104,20 @@ With Azure Resource Manager, you can:
 
 **Azure Compute Services**
 
-- Azure virtual machines: create and use virtual machines in the cloud. _Similar to EC2 Instances_
-- Virtual machine scale sets: Azure compute resource that you can use to deploy and manage a set of identical VMs. _Similar to Auto Scaling (in AWS)_
-- App services: quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform. A fully managed platform for building, deploying and scaling your web apps. _Similar to Elastic Beanstalk and LightSail (in AWS)_
-- Functions: are ideal when you're concerned only about the code running your service and not the underlying platform or infrastructure. _Similar to AWS Lambda._
+- Azure virtual machines: create and use virtual machines in the cloud.  
+  _Similar to EC2 Instances (AWS)_
+- Virtual machine scale sets: Azure compute resource that you can use to deploy and manage a set of identical VMs.  
+  _Similar to Auto Scaling (in AWS)_
+- App services: quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform. A fully managed platform for building, deploying and scaling your web apps.  
+  _Similar to Elastic Beanstalk and LightSail (in AWS)_
+- Functions: are ideal when you're concerned only about the code running your service and not the underlying platform or infrastructure.  
+  _Similar to AWS Lambda_
 - Azure Container Instances (ACI).
   - Azure Container Instances offers the fastest and simplest way to run a container in Azure without having to manage any virtual machines or adopt any additional services.
   - It is a PaaS offering that allows you to upload your containers, which it will run for you.
   - _Similar to Elastic Container Service ECS, and Fargate (in AWS)_
-- Azure Kubernetes Service (AKS). Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers. Orchestration is the task of automating and managing a large number of containers and how they interact. _Similar to Elastic Kubernetes Service ECS (in AWS)_
+- Azure Kubernetes Service (AKS). Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers. Orchestration is the task of automating and managing a large number of containers and how they interact.  
+  _Similar to Elastic Kubernetes Service ECS (in AWS)_
 
 ### describe products available for Networking such as Virtual Network, Load Balancer, VPN Gateway, Application Gateway and Content Delivery Network
 
@@ -149,9 +157,104 @@ With Azure Resource Manager, you can:
 
 **Azure Storage**
 
+- Blob Storage
+
+  - Azure Blob storage is Microsoft's object storage solution for the cloud. Blob storage is optimized for storing massive amounts of unstructured data, such as text or binary data.
+
+  - [Azure storage offers different access tiers](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal), which allow you to store blob object data in the most cost-effective manner. The available access tiers include:
+
+    - Hot - Optimized for storing data that is accessed frequently.
+    - Cool - Optimized for storing data that is infrequently accessed and stored for at least 30 days.
+    - Archive - Optimized for storing data that is rarely accessed and stored for at least 180 days with flexible latency requirements (on the order of hours). (**Archive Storage**)
+
+- Disk Storage
+
+  - Disk storage provides disks for virtual machines, applications, and other services to access and use as they need, similar to how they would in on-premises scenarios.
+  - Disk storage allows data to be persistently stored and accessed from an attached virtual hard disk.
+
+- File Storage
+
+  - Azure Files enables you to set up highly available network file shares that can be accessed by using the standard Server Message Block (SMB) protocol.
+  - You can also read the files using the REST interface or the storage client libraries.
+
+- Azure Queue service is used to store and retrieve messages. Queue messages can be up to 64 KB in size, and a queue can contain millions of messages. Queues are generally used to store lists of messages to be processed asynchronously.
+
+- Azure Table storage stores large amounts of structured data.
+  - The service is a NoSQL datastore which accepts authenticated calls from inside and outside the Azure cloud.
+  - Azure Tables are ideal for storing structured, non-relational data.
+  - You can use Table storage to store and query huge sets of structured, non-relational data, and your tables will scale as demand increases.
+
+#### IF YOU WANT TO... USE THIS
+
+- Get scalable and secure storage for your virtual machines: **Disk storage**
+- Find massively scalable, secure storage for your unstructured data: **Blob storage**
+- Get low-cost storage for rarely accessed data: **Archive Storage**
+- Get secure cloud file shares: **File Storage**
+- Get secure storage for message-based communication between apps: **Queue Storage**
+- Appliances and solutions for data transfer to Azure and edge compute: **Data Box**
+- Create powerful file shares for enterprise workloads, including open-source/Linux: **Azure NetApp Files**
+- File caching for high-performance computing (HPC): **Azure HPC Cache**
+
 ### describe products available for Databases such as Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database Migration service
 
+- Cosmos DB
+
+  - Azure Cosmos DB is a fully managed NoSQL database service for modern app development with guaranteed single-digit millisecond response times and 99.999-per cent availability, backed by SLAs, automatic and instant scalability, and open-source APIs for MongoDB and Cassandra.
+  - It supports schema-less data that lets you build highly responsive and Always On applications to support constantly changing data.
+
+- Azure SQL Database
+
+  - Azure SQL Database is a relational database as a service (DaaS) based on the latest stable version of Microsoft SQL Server database engine.
+  - Options:
+    - Single database (Hyperscale storage (up to 100TB), serverless compute, easy management);
+    - Elastic pool (resource sharing for cost optimization, simplified performance management);
+    - Database server (access management, backup management, business continuity management)
+
+- Azure SQL Managed Instance
+
+  - The broadest SQL Server compatibility on a fully managed service streamlines app modernisation with minimal code changes.
+  - Lift and shift ready.
+  - Native virtual network support
+  - Fully managed service
+
+- Azure SQL Server on Azure Virtual Machines
+
+  - Best for migrations and applications requiring OS-level access.
+  - Lift and shift ready.
+  - Expansive SQL Server and OS version support
+  - Automated manageability features for SQL Server
+
+- Azure Database for MySQL
+
+  - Fully managed database that supports the latest MySQL community editions.
+  - Azure Database for MySQL is easy to set up, manage and scale.
+  - It automates the management and maintenance of your infrastructure and database server, including routine updates, backups and security.
+  - Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MySQL database service, or migrate MySQL workloads to the cloud.
+
+- Azure Database for PostgreSQL
+
+  - Build scalable, secure and fully managed enterprise-ready apps on open-source PostgreSQL, scale out single-node PostgreSQL with high performance or migrate PostgreSQL and Oracle workloads to the cloud.
+
+- MariaDB
+
+  - Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MariaDB database service
+
+- Azure Database Migration service
+
+  - The Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime (online migrations).
+  - The service uses the Microsoft Data Migration Assistant to generate assessment reports that provide recommendations to help guide you through required changes prior to performing a migration.
+
+- Azure Cache for Redis: An in-memory–based, distributed caching service that provides a high-performance store typically used to offload nontransactional work from a database.
+
+> More on Azure databases: https://azure.microsoft.com/en-gb/product-categories/databases/
+
 ### describe the Azure Marketplace and its usage scenarios
+
+Azure Marketplace is a service on Azure that helps connect end users with Microsoft partners, independent software vendors (ISVs), and start-ups that are offering their solutions and services, which are optimized to run on Azure.
+
+Azure Marketplace allows customers—mostly IT professionals and cloud developers—to find, try, purchase, and provision applications and services from hundreds of leading service providers, all certified to run on Azure.
+
+Using Azure Marketplace, you can provision end-to-end solutions quickly and reliably, hosted in your own Azure environment. At the time of writing, this includes over 8,000 listings.
 
 ## 2.3. Describe some of the solutions available on Azure
 

@@ -1,6 +1,9 @@
 # Exam AZ-900: Microsoft Azure Fundamentals – Skills Measured
 
-This exam was updated on May 28, 2020.
+> https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals  
+> https://docs.microsoft.com/en-us/learn/paths/azure-fundamentals
+
+This exam was updated on May 28, 2020.  
 
 ## 1. Describe Cloud Concepts (15-20%)
 

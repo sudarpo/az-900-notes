@@ -278,7 +278,40 @@ Azure ATP enables SecOp analysts and security professionals struggling to detect
 
 ## 3.4. Describe Azure governance methodologies
 
-### describe policies and initiatives with Azure Policy
+### describe policies and initiatives with [Azure Policy](https://docs.microsoft.com/en-gb/azure/governance/policy/overview)
+
+Azure Policy is a service in Azure that you use to create, assign, and, manage policies.
+
+- These policies enforce different rules and effects over your resources, so those resources stay compliant with your corporate standards and service-level agreements (SLAs).
+- Azure Policy does this by using policies and initiatives. It runs evaluations of your resources and scans for those not compliant with the policies you have created.
+- Azure Policy comes with a number of built-in policy and initiative definitions that you can use, under categories such as Storage, Networking, Compute, Security Center, and Monitoring.
+- Common use cases for Azure Policy include implementing governance for resource consistency, regulatory compliance, security, cost, and management.
+
+Three steps to creating an implementing an Azure policy
+
+- Create a policy definition
+- Assign the definition to resource
+- Review the evaluation results
+
+#### [Policy Definition](https://docs.microsoft.com/en-gb/azure/governance/policy/overview#policy-definition)
+
+- Azure Policy evaluates resources in Azure by comparing the properties of those resources to business rules.
+- These business rules, described in JSON format, are known as **policy definitions**.
+- To simplify management, several business rules can be grouped together to form a **policy initiative** (sometimes called a _policySet_).
+- Definitions include metadata and the policy rule.
+
+#### Assign the definition to resource | [Assignment](https://docs.microsoft.com/en-gb/azure/governance/policy/overview#assignments)
+
+- An assignment is a policy definition or initiative that has been assigned to take place within a specific scope.
+- This scope could range from a management group to an individual resource.
+- The term scope refers to all the resources, resource groups, subscriptions, or management groups that the definition is assigned to.
+- Policy assignments are inherited by all child resources.
+
+#### Review the policy evaluation results
+
+- When a condition is evaluated against your existing resources it is marked compliant or non-compliant.
+- You can review the non-compliant policy results and take any action that is needed.
+- Policy evaluation happens about once an hour.
 
 ### describe Role-Based Access Control (RBAC)
 

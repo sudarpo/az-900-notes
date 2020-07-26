@@ -106,16 +106,35 @@ With Azure Resource Manager, you can:
 
 - Azure virtual machines: create and use virtual machines in the cloud.  
   _Similar to EC2 Instances (AWS)_
+
 - Virtual machine scale sets: Azure compute resource that you can use to deploy and manage a set of identical VMs.  
   _Similar to Auto Scaling (in AWS)_
-- App services: quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform. A fully managed platform for building, deploying and scaling your web apps.  
-  _Similar to Elastic Beanstalk and LightSail (in AWS)_
+
+- [App services](https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/9-explore-azure-app-service): quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform.
+  - A fully managed platform for building, deploying and scaling your web apps.
+  - _Similar to Elastic Beanstalk and LightSail (in AWS)_
+
+> #### Key features of Azure App Service
+>
+> - Multiple languages and frameworks. App Service has first-class support for ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP, or Python. You can also run PowerShell and other scripts or executables as background services.
+> - DevOps optimization. Set up continuous integration and deployment with Azure DevOps, GitHub, BitBucket, Docker Hub, or Azure Container Registry. Promote updates through test and staging environments. Manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
+> - Global scale with high availability. Scale up or out manually or automatically. Host your apps anywhere in Microsoft's global datacenter infrastructure, and the App Service SLA promises high availability.
+> - Connections to SaaS platforms and on-premises data. Choose from more than 50 connectors for enterprise systems (such as SAP), SaaS services (such as Salesforce), and internet services (such as Facebook). Access on-premises data using Hybrid Connections and Azure Virtual Networks.
+> - Security and compliance. App Service is ISO, SOC, and PCI compliant. Authenticate users with Azure Active Directory or with social login (Google, Facebook, Twitter, and Microsoft). Create IP address restrictions and manage service identities.
+> - Application templates. Choose from an extensive list of application templates in the Azure Marketplace, such as WordPress, Joomla, and Drupal.
+> - Visual Studio integration. Dedicated tools in Visual Studio streamline the work of creating, deploying, and debugging.
+> - API and mobile features. App Service provides turn-key CORS support for RESTful API scenarios, and simplifies mobile app scenarios by enabling authentication, offline data sync, push notifications, and more.
+> - Serverless code. Run a code snippet or script on-demand without having to explicitly provision or manage infrastructure, and pay only for the compute time your code actually uses.
+
 - Functions: are ideal when you're concerned only about the code running your service and not the underlying platform or infrastructure.  
   _Similar to AWS Lambda_
+
 - Azure Container Instances (ACI).
+
   - Azure Container Instances offers the fastest and simplest way to run a container in Azure without having to manage any virtual machines or adopt any additional services.
   - It is a PaaS offering that allows you to upload your containers, which it will run for you.
   - _Similar to Elastic Container Service ECS, and Fargate (in AWS)_
+
 - Azure Kubernetes Service (AKS). Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers. Orchestration is the task of automating and managing a large number of containers and how they interact.  
   _Similar to Elastic Kubernetes Service ECS (in AWS)_
 
@@ -260,18 +279,225 @@ Using Azure Marketplace, you can provision end-to-end solutions quickly and reli
 
 ### describe Internet of Things (IoT) and products that are available for IoT on Azure such as IoT Hub and IoT Central
 
+#### Internet of Things (IoT)]
+
+Internet of Things (IoT) is the ability for devices to garner and then relay information for data analysis.
+
+Azure Internet of Things (IoT) is a collection of Microsoft-managed cloud services that connect, monitor, and control billions of IoT assets. In simpler terms, an IoT solution is made up of one or more IoT devices that communicate with one or more back-end services hosted in the cloud.
+
+An IoT device is typically made up of a circuit board with sensors attached that use WiFi to connect to the internet. For example:
+
+- A pressure sensor on a remote oil pump.
+- Temperature and humidity sensors in an air-conditioning unit.
+- An accelerometer in an elevator.
+- Presence sensors in a room.
+
+#### IoT Hub
+
+Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages.
+
+- build IoT solutions with reliable and secure communications between millions of IoT devices and a cloud-hosted solution backend.
+- supports communications both from the device to the cloud and from the cloud to the device.
+- supports multiple messaging patterns such as device-to-cloud telemetry, file upload from devices, and request-reply methods to control your devices from the cloud.
+- IoT Hub monitoring helps you maintain the health of your solution by tracking events such as device creation, device failures, and device connections.
+- Use Azure IoT platform services such as Azure IoT Hub and the Azure IoT device SDKs to build a custom IoT solution from scratch.
+
+#### IoT Central
+
+IoT Central is a fully managed global IoT software as a service (SaaS) solution that makes it easy to connect, monitor, and manage your IoT assets at scale.
+
+- a fully managed application platform that you can use to create custom IoT solutions.
+- provides seamless device connectivity and management.
+- IoT Central uses application templates to create solutions.
+
+> https://docs.microsoft.com/en-us/azure/iot-fundamentals/  
+> https://docs.microsoft.com/en-us/azure/iot-fundamentals/iot-services-and-technologies
+
 ### describe Big Data and Analytics and products that are available for Big Data and Analytics such as Azure Synapse Analytics, HDInsight, and Azure Databricks
+
+#### Big data and analytics
+
+https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/4-explore-big-data-analytics
+
+#### Azure Synapse Analytics
+
+Azure Synapse Analytics (formerly Azure SQL Data Warehouse) is a limitless analytics service that brings together enterprise data warehousing and big data analytics.
+
+- Cloud-based Enterprise Data Warehouse (EDW) that uses Massively Parallel Processing (MPP) to quickly run complex queries across petabytes of data.
+- _Similar to AWS Redshift_
+
+#### HDInsight
+
+Azure HDInsight is a fully managed, open-source analytics service for enterprises.
+
+- It is a cloud service that makes it easier, faster, and more cost-effective to process massive amounts of data.
+- run popular open-source frameworks and create cluster types such as Apache Spark, Apache Hadoop, Apache Kafka, Apache HBase, Apache Storm, Machine Learning Services.
+- supports a broad range of scenarios such as extraction, transformation, and loading (ETL); data warehousing; machine learning; and IoT.
+- _Similar to AWS EMR (Elastic MapReduce)_
+
+#### Azure Databricks
+
+- Big data analytics and AI with optimised Apache Spark.
+- A fully managed, fast, easy and collaborative Apache Spark based analytics platform optimised for Azure.
+- _Similar to AWS EMR (Elastic MapReduce)_
+
+#### Azure Data Lake Analytics
+
+Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data. Instead of deploying, configuring, and tuning hardware, you write queries to transform your data and extract valuable insights.
+
+- _Similar to AWS Kinesis Analytics_
+
+> More info on big data and analytics.  
+> https://azure.microsoft.com/en-gb/product-categories/analytics/  
+> https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/
 
 ### describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio
 
+#### Artificial Intelligence (AI)
+
+Machine Learning is a data science technique that allows computers to use existing data to forecast future behaviors, outcomes, and trends.
+
+- Using machine learning, computers learn without being explicitly programmed.
+- Forecasts or predictions from machine learning can make apps and devices smarter.
+
+#### Azure Machine Learning Service
+
+The Azure Machine Learning service provides a cloud-based environment you can use to develop, train, test, deploy, manage, and track machine learning models.  
+The Azure Machine Learning service can auto-generate a model and auto-tune it for you. It will let you start training on your local machine, and then scale out to the cloud. When you have the right model, you can easily deploy it in a container such as Docker in Azure.
+
+> https://docs.microsoft.com/en-gb/azure/machine-learning/compare-azure-ml-to-studio-classic
+
+- Azure Machine Learning provides Python and R SDKs and the "drag-and-drop" designer to build and deploy machine learning models.
+- Studio (classic) only offers a standalone drag-and-drop experience.
+
+| Feature                                            | Machine Learning Studio (classic)                | Azure Machine Learning                                                                                                                                 |
+| -------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Drag and drop interface                            | Supported                                        | Supported - [Azure Machine Learning designer (preview)](concept-designer.md) <br/>(Requires Enterprise workspace)                                      |
+| Experiment                                         | Scalable (10-GB training data limit)             | Scale with compute target                                                                                                                              |
+| Training compute targets                           | Proprietary compute target, CPU support only     | Wide range of customizable [training compute targets](concept-compute-target.md#train). Includes GPU and CPU support                                   |
+| Deployment compute targets                         | Proprietary web service format, not customizable | Wide range of customizable [deployment compute targets](concept-compute-target.md#deploy). Includes GPU and CPU support                                |
+| ML Pipeline                                        | Not supported                                    | Build flexible, modular [pipelines](concept-ml-pipelines.md) to automate workflows                                                                     |
+| MLOps                                              | Basic model management and deployment            | Entity versioning (model, data, workflows), workflow automation, integration with CICD tooling, [and more](concept-model-management-and-deployment.md) |
+| Model format                                       | Proprietary format, Studio (classic) only        | Multiple supported formats depending on training job type                                                                                              |
+| Automated model training and hyperparameter tuning | Not supported                                    | [Supported in the SDK and visual workspace](concept-automated-ml.md)                                                                                   |
+| Data drift detection                               | Not supported                                    | [Supported in SDK and visual workspace](how-to-monitor-datasets.md)                                                                                    |
+
+#### Azure Cognitive Services
+
+Cognitive services are a collection of domain-specific pre-trained AI models that can be customized with your data. They are categorized broadly into vision, speech, language, and search.
+
+> https://azure.microsoft.com/en-gb/services/#ai-machine-learning
+
+- Vision: Vision makes it possible for apps and services to accurately identify and analyze content within images and videos.
+- Speech: Speech services can convert spoken language into text, or produce natural-sounding speech from text using standard (or customizable) voice fonts.
+- Language: Language services can understand the meaning of unstructured text or recognize the speaker’s intent.
+- Knowledge: Knowledge services create rich knowledge resources that integrate into apps and services.
+- Search: Enable apps and services to harness the power of a web-scale, ad-free search engine. Use search services to find information across billions of web pages, images, videos, and news search results.
+
 ### describe Serverless computing and Azure products that are available for serverless computing such as Azure Functions, Logic Apps, and Event Grid
 
+**Serverless computing** is a cloud-hosted execution environment that runs your code but abstracts the underlying hosting environment. You create an instance of the service and you add your code. No infrastructure configuration or maintenance is required, or even allowed.
+
+#### Azure Functions
+
+- Azure Functions are ideal when you're only concerned with the code running your service and not the underlying platform or infrastructure.
+- Azure Functions are commonly used when you need to perform work in response to an event—often via a REST request, timer, or message from another Azure service—and when that work can be completed quickly, within seconds or less.
+- scale automatically,
+- charges accrue only when a function is triggered,
+- stateless
+- _AWS Lambda_
+
+#### Azure Logic Apps (https://docs.microsoft.com/en-gb/azure/logic-apps/)
+
+- Logic Apps is a cloud service that helps you automate and orchestrate tasks, business processes, and workflows when you need to integrate apps, data, systems, and services across enterprises or organizations.
+- Logic Apps are designed in a web-based designer and can execute logic triggered by Azure services without writing any code.
+- Every logic app workflow starts with a trigger, which fires when a specific event happens, or when new available data meets specific criteria.
+- _AWS Step Functions; Simple Workflow Service (SWF)_
+
+#### Azure Event Grid (https://docs.microsoft.com/en-gb/azure/event-grid/overview)
+
+Event Grid allows you to easily build applications with event-based architectures.
+
+- A fully managed event routing service that allows for uniform event consumption using a publish/subscribe model.
+- _AWS SNS Simple Notification Service_
+
 ### describe DevOps solutions available on Azure such as Azure DevOps and Azure DevTest Labs
+
+[DevOps](https://azure.microsoft.com/en-gb/solutions/devops/) (Development and Operations) brings together people, processes, and technology, automating software delivery to provide continuous value to your users. Azure DevOps Services allows you to create, build, and release pipelines that provide continuous integration, delivery, and deployment for your applications.
+
+#### DevOps Services
+
+- DevOps Services provides development collaboration tools including high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and cloud-based load testing.
+- DevOps Services was formerly known as Visual Studio Team Services (VSTS).
+
+#### Azure Lab Services (https://azure.microsoft.com/en-gb/services/devtest-lab/)
+
+- Lab Services is a service that helps developers and testers quickly create environments in Azure, while minimizing waste and controlling cost.
+- Users can test their latest application versions by quickly provisioning Windows and Linux environments using reusable templates and artifacts. You can easily integrate your deployment pipeline with DevTest Labs to provision on-demand environments.
+- https://docs.microsoft.com/en-gb/azure/devtest-labs/devtest-lab-overview
+
+**Azure DevTest Labs** - This service enables you to quickly set up an environment for your team (for example: development environment, or test environment in the cloud). A lab owner creates a lab, provisions Windows, or Linux virtual machines, installs the necessary software and tools, and makes them available to lab users. Lab users connect to virtual machines (VMs) in the lab, and use them for their day-to-day work, short-term projects. Once users start utilizing resources in the lab, a lab admin can analyze cost and usage across multiple labs, and set overarching policies to optimize your organization or team's costs.
+
+**Azure Lab Services** - This service lets you create managed lab types. Currently, classroom labs is the only type of managed lab that's supported by Azure Lab Services. The service itself handles all the infrastructure management for a managed lab type, from spinning up VMs to handling errors, and scaling the infrastructure. After an IT admin creates a lab account in Azure Lab Services, an instructor can quickly set up a lab for his class, specify the number and type of VMs that are need to exercises in the class, and add users to the class. Once a user registers to the class, the user can access the VM to do exercises for the class.
+
+You can create two types of labs: **managed lab types** with Azure Lab Services and **labs** with Azure Lab Services (DevTest Labs).
+
+| Features                                         | Managed lab types                                                                                                                            | DevTest Labs                                                                            |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Management of Azure infrastructure in the lab.   | Automatically managed by the service                                                                                                         | You manage on your own                                                                  |
+| Built-in resiliency to infrastructure issues     | Automatically handled by the service                                                                                                         | You manage on your own                                                                  |
+| Subscription management                          | Service handles allocation of resources within Microsoft subscriptions backing the service. Scaling is automatically handled by the service. | You manage on your own in your own Azure subscription. No autoscaling of subscriptions. |
+| Azure Resource Manager deployment within the lab | Not available                                                                                                                                | Available                                                                               |
 
 ### describe the benefits and outcomes of using Azure solutions
 
 ## 2.4. Describe Azure management tools
 
+Azure Management tools.  
+There are tools available for the command line, language-specific Software Development Kits (SDKs), developer tools, tools for migration, and many others.
+
 ### describe Azure tools such as Azure Portal, Azure PowerShell, Azure CLI and Cloud Shell
 
-### describe Azure Advisor
+#### Azure portal
+
+The Azure portal is a public website that you can access with any web browser. After you sign in with your Azure account, you can create, manage, and monitor any available Azure services. You can identify a service you're looking for, get links for help on a topic, and deploy, manage, and delete resources. It also guides you through complex administrative tasks using wizards and tooltips.
+
+The dashboard view provides high-level details about your Azure environment. You can customize the portal view as you need by moving and resizing tiles, displaying particular services of interest, accessing links for help and support, and providing feedback.
+
+#### Azure PowerShell (https://docs.microsoft.com/en-us/powershell/azure/?view=azps-4.4.0)
+
+Azure PowerShell is a module that you add to Windows PowerShell or PowerShell Core that enables you to connect to your Azure subscription and manage resources. Azure PowerShell requires Windows PowerShell to function. PowerShell provides services such as the shell window and command parsing. Azure PowerShell then adds the Azure-specific commands.
+
+#### Azure CLI (https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
+
+Azure CLI is a cross-platform command-line program that connects to Azure and executes administrative commands on Azure resources. Cross platform means that it can be run on Windows, Linux, or macOS.
+
+#### Cloud Shell
+
+Azure Cloud Shell is a browser-based scripting environment in your portal. It provides the flexibility of choosing the shell experience that best suits the way you work. Linux users can opt for a Bash experience, while Windows users can opt for PowerShell.
+
+A storage account is required to use the Cloud Shell and you will be prompted to create one when accessing the Azure Cloud Shell.
+
+#### Azure Mobile App
+
+Microsoft Azure mobile app allows you to access, manage, and monitor all your Azure accounts and resources from your iOS or Android phone or tablet.
+
+#### Azure REST API
+
+Representational State Transfer (REST) APIs are service endpoints that support sets of HTTP operations (methods), which provide create, retrieve, update, or delete access to the service's resources. A REST API defines a set of functions which developers can perform requests and receive responses via HTTP protocol such as GET and POST.
+
+### describe Azure Advisor (https://docs.microsoft.com/en-us/azure/advisor/advisor-overview)
+
+Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry and then recommends solutions that can help you improve the cost effectiveness, performance, Reliability (formerly called High availability), and security of your Azure resources.
+
+- Get proactive, actionable, and personalized best practices recommendations.
+- Improve the performance, security, and high availability of your resources as you identify opportunities to reduce your overall Azure costs.
+- Get recommendations with proposed actions inline.
+
+Recommendations are divided into five categories:
+
+- Reliability (formerly called High Availability): To ensure and improve the continuity of your business-critical applications.
+- Security: To detect threats and vulnerabilities that might lead to security breaches.
+- Performance: To improve the speed of your applications.
+- Cost: To optimize and reduce your overall Azure spending.
+- Operational Excellence: To help you achieve process and workflow efficiency, resource manageability and deployment best practices.

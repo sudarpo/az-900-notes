@@ -186,10 +186,34 @@ With Azure Resource Manager, you can:
     - Cool - Optimized for storing data that is infrequently accessed and stored for at least 30 days.
     - Archive - Optimized for storing data that is rarely accessed and stored for at least 180 days with flexible latency requirements (on the order of hours). (**Archive Storage**)
 
-- Disk Storage
+  - [Blob storage](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction) offers three types of resources:
+
+    - The storage account
+      A storage account provides a unique namespace in Azure for your data. Every object that you store in Azure Storage has an address that includes your unique account name. The combination of the account name and the Azure Storage blob endpoint forms the base address for the objects in your storage account.
+
+    - A container in the storage account
+      A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
+
+    - A blob in a container
+      Azure Storage supports three types of blobs:
+
+      - Block blobs store text and binary data. Block blobs are made up of blocks of data that can be managed individually. Block blobs store up to about 4.75 TiB of data. Larger block blobs are available in preview, up to about 190.7 TiB
+      - Append blobs are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from virtual machines.
+      - Page blobs store random access files up to 8 TB in size. Page blobs store virtual hard drive (VHD) files and serve as disks for Azure virtual machines. For more information about page blobs, see Overview of Azure page blobs
+
+- Disk Storage / [Azure Managed Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)
 
   - Disk storage provides disks for virtual machines, applications, and other services to access and use as they need, similar to how they would in on-premises scenarios.
   - Disk storage allows data to be persistently stored and accessed from an attached virtual hard disk.
+  - [Disk types](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types):
+
+| Detail         | Ultra disk                                                                                                                       | Premium SSD                                    | Standard SSD                                                   | Standard HDD                            |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------- | --------------------------------------- |
+| Disk type      | SSD                                                                                                                              | SSD                                            | SSD                                                            | HDD                                     |
+| Scenario       | IO-intensive workloads such as [SAP HANA], top tier databases (for example, SQL, Oracle), and other transaction-heavy workloads. | Production and performance sensitive workloads | Web servers, lightly used enterprise applications and dev/test | Backup, non-critical, infrequent access |
+| Max disk size  | 65,536 gibibyte (GiB)                                                                                                            | 32,767 GiB                                     | 32,767 GiB                                                     | 32,767 GiB                              |
+| Max throughput | 2,000 MB/s                                                                                                                       | 900 MB/s                                       | 750 MB/s                                                       | 500 MB/s                                |
+| Max IOPS       | 160,000                                                                                                                          | 20,000                                         | 6,000                                                          | 2,000                                   |
 
 - File Storage
 
@@ -254,14 +278,15 @@ With Azure Resource Manager, you can:
 
   - Build scalable, secure and fully managed enterprise-ready apps on open-source PostgreSQL, scale out single-node PostgreSQL with high performance or migrate PostgreSQL and Oracle workloads to the cloud.
 
-- MariaDB
+- Azure Database for MariaDB
 
   - Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MariaDB database service
 
-- Azure Database Migration service
+- [Azure Database Migration service](https://docs.microsoft.com/en-us/azure/dms/resource-scenario-status)
 
   - The Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime (online migrations).
   - The service uses the Microsoft Data Migration Assistant to generate assessment reports that provide recommendations to help guide you through required changes prior to performing a migration.
+  - [Supported sources](https://docs.microsoft.com/en-us/azure/dms/resource-scenario-status), e.g. SQL Server, RDS SQL, MongoDB, MySQL, RDS MySQL, PostgreSQL, RDS PostgreSQL, Oracle.
 
 - Azure Cache for Redis: An in-memory–based, distributed caching service that provides a high-performance store typically used to offload nontransactional work from a database.
 

@@ -2,7 +2,7 @@
 
 ## 1.1. Describe the benefits and considerations of using cloud services
 
-### describe terms such as High Availability, Scalability, Elasticity, Agility, Fault Tolerance, and Disaster Recovery
+### 1.1.A. describe terms such as High Availability, Scalability, Elasticity, Agility, Fault Tolerance, and Disaster Recovery
 
 **High availability**. The ability to keep services up and running for long periods of time, with very little downtime, depending on the service in question.
 
@@ -28,7 +28,7 @@
 
 **Security**. Cloud providers offer a broad set of policies, technologies, controls, and expert technology skills that can provide better security than most organizations can otherwise achieve. The result is strengthened security, which helps to protect data, apps, and infrastructure from potential threats.
 
-### describe the principles of economies of scale
+### 1.1.B. describe the principles of economies of scale
 
 The concept of economies of scale is the ability to reduce costs and gain efficiency when operating at a larger scale in comparison to operating at a smaller scale.
 
@@ -36,7 +36,7 @@ Cloud providers are large businesses, and are able to leverage the benefits of e
 
 This is apparent to end users in a number of ways, one of which is the ability to acquire hardware at a lower cost than if a single user or smaller business were purchasing it.
 
-### describe the differences between Capital Expenditure (CapEx) and Operational Expenditure (OpEx)
+### 1.1.C. describe the differences between Capital Expenditure (CapEx) and Operational Expenditure (OpEx)
 
 **Capital Expenditure (CapEx)**: This is the up front spending of money on physical infrastructure, and then deducting that up front expense over time. The up front cost from CapEx has a value that reduces over time.
 
@@ -60,7 +60,7 @@ With capital expenditures, you plan your expenses at the start of a project or b
 Benefits of OpEx  
 Demand and growth can be unpredictable and can outpace expectation, which is a challenge for the CapEx model as shown in the following graph.
 
-### describe the consumption-based model
+### 1.1.D. describe the consumption-based model
 
 - only pay for the resources that they use
 
@@ -79,7 +79,7 @@ has many benefits, including:
 
 ![Cloud](https://docs.microsoft.com/en-us/learn/wwl-azure/explore-types-cloud-services/media/shared-responsibility.png)
 
-### describe Infrastructure-as-a-Service (IaaS),
+### 1.2.A. describe Infrastructure-as-a-Service (IaaS),
 
 - Rent IT infrastructure servers and virtual machines (VMs), storage, networks, and operating systems
 
@@ -89,7 +89,7 @@ IaaS characteristics
 - User ownership. The user is responsible for the purchase, installation, configuration, and management of their own software operating systems, middleware, and applications.
 - Cloud provider ownership. The cloud provider is responsible for ensuring that the underlying cloud infrastructure (such as virtual machines, storage and networking) is available for the user.
 
-### describe Platform-as-a-Service (PaaS)
+### 1.2.B. describe Platform-as-a-Service (PaaS)
 
 PaaS characteristics
 
@@ -97,7 +97,7 @@ PaaS characteristics
 - User ownership. The user is responsible for the development of their own applications. However, they are not responsible for managing the server or infrastructure. This allows the user to focus on the application or workload they want to run.
 - Cloud provider ownership. The cloud provider is responsible for operating system management, and network and service configuration. Cloud providers are typically responsible for everything apart from the application that a user wants to run. They provide a complete managed platform on which to run an application.
 
-### describe Software-as-a-Service (SaaS)
+### 1.2.C. describe Software-as-a-Service (SaaS)
 
 SaaS characteristics
 
@@ -105,7 +105,7 @@ SaaS characteristics
 - User ownership. Users just use the application software; they are not responsible for any maintenance or management of that software.
 - Cloud provider ownership. The cloud provider is responsible for the provision, management, and maintenance of the application software.
 
-### compare and contrast the three different service types
+### 1.2.D. compare and contrast the three different service types
 
 #### IaaS
 
@@ -160,7 +160,7 @@ Disadvantages
 
 ## 1.3. Describe the differences between Public, Private and Hybrid cloud models
 
-### describe Public cloud
+### 1.3.A. describe Public cloud
 
 A public cloud is owned by the cloud services provider (also known as a hosting provider). It provides resources and services to multiple organizations and users, who connect to the cloud service via a secure network connection, typically over the internet.
 
@@ -173,7 +173,7 @@ Public cloud models have the following characteristics:
 - Connectivity - Users and organizations are typically connected to the public cloud over the internet using a web browser.
 - Skills - Public clouds do not require deep technical knowledge to set up and use its resources.
 
-### describe Private cloud
+### 1.3.B. describe Private cloud
 
 A private cloud is owned and operated by the organization that uses the resources from that cloud. They create a cloud environment in their own datacenter and provide self-service access to compute resources to users within their organization. The organization remains the owner, entirely responsible for the operation of the services they provide.
 
@@ -186,7 +186,7 @@ Private cloud models have the following characteristics:
 - Public access. Does not provide access to the public.
 - Skills. Requires deep technical knowledge to set up, manage, and maintain.
 
-### describe Hybrid cloud
+### 1.3.C. describe Hybrid cloud
 
 A hybrid cloud combines both public and private clouds, allowing you to run your applications in the most appropriate location.
 
@@ -197,7 +197,7 @@ Hybrid cloud models have the following characteristics:
 - Control. Organizations retain management control in private clouds.
 - Skills. Technical skills are still required to maintain the private cloud and ensure both cloud models can operate together.
 
-### compare and contrast the [three different cloud models](https://docs.microsoft.com/en-us/learn/modules/distinguish-types-cloud-models/5-compare-cloud-models)
+### 1.3.D. compare and contrast the [three different cloud models](https://docs.microsoft.com/en-us/learn/modules/distinguish-types-cloud-models/5-compare-cloud-models)
 
 #### Public Cloud
 

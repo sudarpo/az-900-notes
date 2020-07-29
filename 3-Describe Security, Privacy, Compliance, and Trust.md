@@ -2,7 +2,7 @@
 
 ## 3.1. Describe securing network connectivity in Azure
 
-### describe Network Security Groups (NSG) [ref-docs](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview)
+### 3.1.A. describe Network Security Groups (NSG) [ref-docs](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview)
 
 Network Security Groups (NSG) allow you to filter network traffic to and from Azure resources in an Azure virtual network. An NSG can contain multiple inbound and outbound security rules that enable you to filter traffic to and from resources by source and destination IP address, port, and protocol.
 
@@ -24,7 +24,7 @@ Network Security Groups (NSG) allow you to filter network traffic to and from Az
 - The flow record allows a network security group to be stateful.
   > If you specify an outbound security rule to any address over port 80, for example, it's not necessary to specify an inbound security rule for the response to the outbound traffic. You only need to specify an inbound security rule if communication is initiated externally. The opposite is also true. If inbound traffic is allowed over a port, it's not necessary to specify an outbound security rule to respond to traffic over the port.
 
-### describe Application Security Groups (ASG) [ref-docs](https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups)
+### 3.1.B. describe Application Security Groups (ASG) [ref-docs](https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups)
 
 Application security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups.
 
@@ -35,7 +35,7 @@ Application security groups enable you to configure network security as a natura
 
 > https://docs.microsoft.com/en-us/learn/modules/secure-network-connectivity/7-define-application-security-groups
 
-### describe User Defined ~~Rules~~ Routes (UDR)
+### 3.1.C. describe User Defined ~~Rules~~ Routes (UDR)
 
 **User-defined**
 
@@ -44,7 +44,7 @@ Application security groups enable you to configure network security as a natura
 
 > https://docs.microsoft.com/en-gb/azure/virtual-network/virtual-networks-udr-overview#custom-routes
 
-### describe Azure Firewall
+### 3.1.D. describe Azure Firewall
 
 [Azure Firewall](https://azure.microsoft.com/services/azure-firewall) is a managed, cloud-based, network security service that protects your Azure Virtual Network resources. It is a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability.
 
@@ -52,7 +52,7 @@ Application security groups enable you to configure network security as a natura
 - Azure Firewall uses a static public IP address for your virtual network resources, which allows outside firewalls to identify traffic originating from your virtual network.
 - The service is fully integrated with Azure Monitor for logging and analytics.
 
-### describe Azure DDoS Protection (https://docs.microsoft.com/en-us/azure/virtual-network/ddos-protection-overview)
+### 3.1.E. describe Azure DDoS Protection (https://docs.microsoft.com/en-us/azure/virtual-network/ddos-protection-overview)
 
 Distributed Denial of Service (DDoS) attacks attempt to overwhelm and exhaust an application’s resources, making the application slow or unresponsive to legitimate users. DDoS attacks can be targeted at any endpoint that is publicly reachable through the internet.
 
@@ -85,7 +85,7 @@ DDoS standard protection can mitigate the following types of attacks:
 - Protocol attacks. These attacks render a target inaccessible, by exploiting a weakness in the layer 3 and layer 4 protocol stack.
 - Resource (application) layer attacks. These attacks target web application packets to disrupt the transmission of data between hosts.
 
-### choose an appropriate Azure security solution (https://docs.microsoft.com/en-us/learn/modules/secure-network-connectivity/8-choose-azure-security-solutions)
+### 3.1.F. choose an appropriate Azure security solution (https://docs.microsoft.com/en-us/learn/modules/secure-network-connectivity/8-choose-azure-security-solutions)
 
 #### Perimeter layer
 
@@ -120,13 +120,13 @@ At this layer, the focus is on limiting network connectivity across all your res
 
 ## 3.2. Describe core Azure Identity services
 
-### describe the difference between authentication and authorization
+### 3.2.A. describe the difference between authentication and authorization
 
 - **Authentication**. Authentication is the process of _establishing the identity_ of a person or service looking to access a resource. It involves the act of challenging a party for legitimate credentials and provides the basis for creating a security principal for identity and access control use. It establishes if they are who they say they are.
 
 - **Authorization**. Authorization is the process of _establishing what level of access_ an authenticated person or service has. It specifies what data they're allowed to access and what they can do with it.
 
-### describe Azure Active Directory
+### 3.2.B. describe Azure Active Directory
 
 Azure Active Directory is a Microsoft cloud-based identity and access management service. Azure AD helps employees of an organization sign in and access resources:
 
@@ -152,7 +152,7 @@ Single sign-on with Azure Active Directory
 
 By leveraging Azure AD for single sign-on you'll also have the ability to combine multiple data sources into an intelligent security graph. This security graph enables the ability to provide threat analysis and real-time identity protection to all accounts in Azure AD, including accounts that are synchronized from your on-premises AD. By using a centralized identity provider, you'll have centralized the security controls, reporting, alerting, and administration of your identity infrastructure.
 
-### describe Azure Multi-Factor Authentication
+### 3.2.C. describe Azure Multi-Factor Authentication
 
 Azure Multi-Factor Authentication provides additional security for your identities by requiring two or more elements for full authentication.  
 These elements fall into three categories:
@@ -169,7 +169,7 @@ Multi-factor authentication (MFA) comes as part of the following Azure service o
 
 ## 3.3. Describe security tools and features of Azure
 
-### describe Azure Security Center (https://docs.microsoft.com/en-gb/azure/security-center/security-center-intro)
+### 3.3.A. describe Azure Security Center (https://docs.microsoft.com/en-gb/azure/security-center/security-center-intro)
 
 Azure Security Center
 
@@ -202,7 +202,7 @@ To help you protect yourself against these challenges, Security Center provides 
 - **Protect against threats**: Security Center assesses your workloads and raises threat prevention recommendations and security alerts.
 - **Get secure faster**: In Security Center, everything is done in cloud speed. Because it is natively integrated, deployment of Security Center is easy, providing you with auto-provisioning and protection with Azure services.
 
-### describe Azure Security Center usage scenarios
+### 3.3.B. describe Azure Security Center usage scenarios
 
 #### Use Security Center for an incident response
 
@@ -220,7 +220,7 @@ A security policy defines the set of controls that are recommended for resources
 
 Security Center analyzes the security state of your Azure resources. When Security Center identifies potential security vulnerabilities, it creates recommendations based on the controls set in the security policy. The recommendations guide you through the process of configuring the needed security controls.
 
-### describe Key Vault (https://docs.microsoft.com/en-gb/azure/key-vault/general/overview)
+### 3.3.C. describe Key Vault (https://docs.microsoft.com/en-gb/azure/key-vault/general/overview)
 
 Azure Key Vault is a centralized cloud service for storing your applications' secrets.
 
@@ -242,7 +242,7 @@ Key Vault benefits
 - **Simplified administration of application secrets**. Key Vault makes it easier to enroll and renew certificates from public Certificate Authorities (CAs). You can also scale up and replicate content within regions and use standard certificate management tools.
 - **Integrate with other Azure services**. You can integrate Key Vault with storage accounts, container registries, event hubs and many more Azure services.
 
-### describe Azure Information Protection (AIP) [ref-docs](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection)
+### 3.3.D. describe Azure Information Protection (AIP) [ref-docs](https://docs.microsoft.com/en-us/azure/information-protection/what-is-information-protection)
 
 Azure Information Protection is a cloud-based solution that helps organizations classify and (optionally) protect its documents and emails by applying labels.
 
@@ -252,7 +252,7 @@ Labels can be applied
 - manually (by users), or
 - with a combination of both (where users are guided by recommendations).
 
-### describe Azure Advanced Threat Protection (ATP) [ref-docs](https://docs.microsoft.com/en-us/azure-advanced-threat-protection/what-is-atp)
+### 3.3.E. describe Azure Advanced Threat Protection (ATP) [ref-docs](https://docs.microsoft.com/en-us/azure-advanced-threat-protection/what-is-atp)
 
 Azure Advanced Threat Protection is a cloud-based security solution that identifies, detects, and helps you investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.
 
@@ -278,7 +278,7 @@ Azure ATP enables SecOp analysts and security professionals struggling to detect
 
 ## 3.4. Describe Azure governance methodologies
 
-### describe policies and initiatives with [Azure Policy](https://docs.microsoft.com/en-gb/azure/governance/policy/overview)
+### 3.4.A. describe policies and initiatives with [Azure Policy](https://docs.microsoft.com/en-gb/azure/governance/policy/overview)
 
 Azure Policy is a service in Azure that you use to create, assign, and, manage policies.
 
@@ -326,7 +326,7 @@ There are a few key differences between Azure Policy and role-based access contr
 
 The combination of RBAC and Azure Policy provide full scope control in Azure.
 
-### describe Role-Based Access Control (RBAC) [ref-docs](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)
+### 3.4.B. describe Role-Based Access Control (RBAC) [ref-docs](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)
 
 **Role-based access control** provides fine-grained access management for Azure resources, enabling you to grant users only the rights they need to perform their jobs.
 
@@ -374,7 +374,7 @@ The combination of RBAC and Azure Policy provide full scope control in Azure.
 
 > https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-### describe Locks (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources)
+### 3.4.C. describe Locks (https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources)
 
 - Resource locks help you prevent accidental deletion or modification of your Azure resources.
 - You can set the lock level to CanNotDelete or ReadOnly.
@@ -388,7 +388,7 @@ The combination of RBAC and Azure Policy provide full scope control in Azure.
 
 ![azure lock](https://docs.microsoft.com/en-gb/learn/wwl-azure/describe-azure-governance-methodologie/media/resource-locks.png)
 
-### describe Azure Advisor security assistance
+### 3.4.D. describe Azure Advisor security assistance
 
 Azure Advisor provides you with a consistent, consolidated view of recommendations for all your Azure resources. It integrates with Azure Security Center to bring you security recommendations. You can get security recommendations from the Security tab on the Advisor dashboard.
 
@@ -397,7 +397,7 @@ Security Center helps you prevent, detect, and respond to threats with increased
 > https://docs.microsoft.com/en-us/azure/advisor/advisor-security-recommendations  
 > https://docs.microsoft.com/en-us/azure/security-center/security-center-recommendations
 
-### describe Azure Blueprints (https://docs.microsoft.com/en-gb/azure/governance/blueprints/overview)
+### 3.4.E. describe Azure Blueprints (https://docs.microsoft.com/en-gb/azure/governance/blueprints/overview)
 
 - Azure Blueprints enable cloud architects to define a repeatable set of Azure resources that implement and adhere to an organization's standards, patterns, and requirements.
 - Azure Blueprint enables development teams to rapidly build and deploy new environments with the knowledge that they're building within organizational compliance with a set of built-in components that speed up development and delivery.
@@ -413,7 +413,7 @@ With Azure Blueprint, the relationship between the blueprint definition (what sh
 
 When Azure Resource Manager Templates deploy resources, they have no active relationship with the deployed resources (they exist in a local environment or in source control).
 
-### Subscription governance
+### 3.4.F. Subscription governance
 
 There are mainly three aspects to consider in relation to creating and managing subscriptions: Billing, Access Control, and Subscription limits.
 
@@ -448,7 +448,7 @@ There are mainly three aspects to consider in relation to creating and managing 
 - Virtual Machines and Virtual Machine Scale Sets are limited to a total of 2048 characters for all tag names and values.
 - Tags applied to the resource group are not inherited by the resources in that resource group.
 
-### describe Azure Monitor (https://docs.microsoft.com/en-gb/azure/azure-monitor/overview)
+### 3.5.A. describe Azure Monitor (https://docs.microsoft.com/en-gb/azure/azure-monitor/overview)
 
 Azure Monitor maximizes the availability and performance of your applications by delivering a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
 
@@ -481,7 +481,7 @@ Azure Monitor collects data from each of the following tiers:
 - **Power BI** is a business analytics service that provides interactive visualizations across a variety of data sources and is an effective means of making data available to others within and outside your organization.
 - **Azure Monitor Workbooks** provide a flexible canvas for data analysis and the creation of rich visual reports within the Azure portal.
 
-### describe Azure Service Health
+### 3.5.B. describe Azure Service Health
 
 Azure Service Health is a suite of experiences that provide personalized guidance and support when issues with Azure services affect you.
 
@@ -496,7 +496,7 @@ Azure Service Health is a suite of experiences that provide personalized guidanc
 
 3. Resource Health helps you diagnose and obtain support when an Azure service issue affects your resources. It provides you details with about the current and past state of your resources.
 
-### describe the use cases and benefits of Azure Monitor and Azure Service Health
+### 3.5.C. describe the use cases and benefits of Azure Monitor and Azure Service Health
 
 https://docs.microsoft.com/en-gb/azure/azure-monitor/monitor-reference  
 https://docs.microsoft.com/en-gb/azure/azure-monitor/continuous-monitoring  
@@ -504,7 +504,7 @@ https://docs.microsoft.com/en-us/azure/service-health/overview
 
 ## 3.6. Describe privacy, compliance and data protection standards in Azure
 
-### describe industry compliance terms such as GDPR, ISO and NIST
+### 3.6.A. describe industry compliance terms such as GDPR, ISO and NIST
 
 #### General Data Protection Regulation (GDPR)
 
@@ -545,13 +545,13 @@ Microsoft cloud services have undergone independent, third-party Federal Risk an
 
 > https://www.microsoft.com/trustcenter/compliance/complianceofferings
 
-### describe the Microsoft Privacy Statement (https://privacy.microsoft.com/privacystatement)
+### 3.6.B. describe the Microsoft Privacy Statement (https://privacy.microsoft.com/privacystatement)
 
 The Microsoft privacy statement explains what personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
 This privacy statement explains the personal data Microsoft processes, how Microsoft processes it, and for what purposes.
 
-### describe the Trust center (https://www.microsoft.com/en-sg/trust-center)
+### 3.6.C. describe the Trust center (https://www.microsoft.com/en-sg/trust-center)
 
 - The Trust Center is a website resource containing information and details about how Microsoft implements and supports security, privacy, compliance, and transparency in all Microsoft cloud products and services.
 - The Trust Center is an important part of the Microsoft Trusted Cloud Initiative and provides support and resources for the legal and compliance community.
@@ -564,7 +564,7 @@ Provides:
 - Cross-company document search, which is coming soon and will enable existing cloud service customers to search the Service Trust Portal.
 - Direct guidance and support for when you can't find what you're looking for.
 
-### describe the Service Trust Portal
+### 3.6.D. describe the Service Trust Portal
 
 - Service Trust Portal (STP) hosts the Compliance Manager service, and
 - is the Microsoft public site for publishing audit reports and other compliance-related information relevant to Microsoft’s cloud services.
@@ -579,7 +579,7 @@ Service Trust Portal is a companion feature to the Trust Center, and allows you 
 
 To access some Service Trust Portal materials, you must sign in as an authenticated user with your Microsoft cloud services account (either an Azure AD organization account or a Microsoft account), and then review and accept the Microsoft Non-Disclosure Agreement for Compliance Materials.
 
-### describe Compliance Manager
+### 3.6.E. describe Compliance Manager
 
 - Compliance Manager is a workflow-based risk assessment dashboard within the Trust Portal that enables you to track, assign, and verify your organization's regulatory compliance activities related to Microsoft professional services and Microsoft cloud services such as Office 365, Dynamics 365, and Azure.
 - Compliance Manager provides you with a dashboard view of standards and regulations and assessments that contain Microsoft's control implementation details and test results and customer control implementation guidance and tracking for your organization to enter.
@@ -590,7 +590,7 @@ To access some Service Trust Portal materials, you must sign in as an authentica
 > https://docs.microsoft.com/en-us/microsoft-365/compliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud?view=o365-worldwide  
 > https://docs.microsoft.com/en-us/microsoft-365/compliance/compliance-manager-overview?view=o365-worldwide
 
-### determine if Azure is compliant for a business need
+### 3.6.F. determine if Azure is compliant for a business need
 
 https://docs.microsoft.com/en-gb/microsoft-365/compliance/offering-home?view=o365-worldwide
 https://azure.microsoft.com/en-us/resources/microsoft-azure-compliance-offerings/
@@ -612,7 +612,7 @@ The Health Insurance Portability and Accountability Act (HIPAA) is a US healthca
 
 HIPAA regulations require that covered entities and their business associates — in this case, Microsoft when it provides services, including cloud services, to covered entities — enter into contracts to ensure that those business associates will adequately protect PHI. These contracts, or BAAs, clarify and limit how the business associate can handle PHI, and set forth each party's adherence to the security and privacy provisions set forth in HIPAA and the HITECH Act. Once a BAA is in place, Microsoft customers — covered entities — can use its services to process and store PHI.
 
-### describe Azure Government cloud services (https://docs.microsoft.com/en-gb/azure/azure-government/documentation-government-welcome)
+### 3.6.G. describe Azure Government cloud services (https://docs.microsoft.com/en-gb/azure/azure-government/documentation-government-welcome)
 
 Azure Government is a separate instance of the Microsoft Azure service. It addresses the security and compliance needs of US federal agencies, state and local governments, and their solution providers.
 
@@ -621,7 +621,7 @@ Azure Government is a separate instance of the Microsoft Azure service. It addre
 - Azure Government customers (US federal, state, and local government or their partners) are subject to validation of eligibility.
 - Most services are the same on both Azure Government and Public Azure. However, there are some differences that you should be aware of. Details are available at [Compare Azure Government and global Azure](https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure).
 
-### describe Azure China cloud services (https://docs.microsoft.com/en-us/azure/china/)
+### 3.6.H. describe Azure China cloud services (https://docs.microsoft.com/en-us/azure/china/)
 
 Azure China 21Vianet is operated by 21Vianet is a physically separated instance of cloud services located in China, independently operated and transacted by Shanghai Blue Cloud Technology Co., Ltd. ("21Vianet"), a wholly owned subsidiary of Beijing 21Vianet Broadband Data Center Co., Ltd.
 

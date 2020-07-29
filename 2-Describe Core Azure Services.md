@@ -5,7 +5,7 @@
 
 ## 2.1. Describe the core Azure architectural components
 
-### describe Regions
+### 2.1.A. describe Regions
 
 A region is a set of datacenters deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network.
 
@@ -36,7 +36,7 @@ Additional advantages of region pairs include:
 > https://docs.microsoft.com/en-us/learn/modules/discuss-core-azure-architectural-components/3-explore-region-pairs  
 > https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#what-are-paired-regions?azure-portal=true
 
-### describe Availability Zones
+### 2.1.B. describe Availability Zones
 
 ![availability-options](https://docs.microsoft.com/en-us/learn/wwl-azure/discuss-core-azure-architectural-components/media/availability-options.png)
 
@@ -58,7 +58,7 @@ Availability Zone features
   _Update domains_ are a logical section of the datacenter, and they are implemented with software and logic.
 - Fault domains. Fault domains provide for the physical separation of your workload across different hardware in the datacenter. This includes power, cooling, and network hardware that supports the physical servers located in server racks. In the event the hardware that supports a server rack becomes unavailable, only that rack of servers would be affected by the outage.
 
-### describe Resource Groups
+### 2.1.C. describe Resource Groups
 
 - A resource group is a unit of management for your resources in Azure.
 - A container that allows you to aggregate and manage all the resources required for your application in a single manageable unit.
@@ -72,7 +72,7 @@ Manage and apply the following resources at resource group level:
 - Quotas
 - Access control
 
-### describe Azure Resource Manager
+### 2.1.D. describe Azure Resource Manager
 
 > https://docs.microsoft.com/en-us/learn/modules/discuss-core-azure-architectural-components/9-explore-azure-resource-manager  
 > https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview
@@ -96,11 +96,11 @@ With Azure Resource Manager, you can:
 - Apply tags to resources to logically organize all the resources in your subscription.
 - Clarify your organization's billing by viewing costs for a group of resources sharing the same tag.
 
-### describe the benefits and usage of core Azure architectural components
+### 2.1.E. describe the benefits and usage of core Azure architectural components
 
 ## 2.2. Describe some of the core products available in Azure
 
-### describe products available for Compute such as Virtual Machines, Virtual Machine Scale Sets, App Services, Azure Container Instances (ACI) and Azure Kubernetes Service (AKS)
+### 2.2.A. describe products available for Compute such as Virtual Machines, Virtual Machine Scale Sets, App Services, Azure Container Instances (ACI) and Azure Kubernetes Service (AKS)
 
 **Azure Compute Services**
 
@@ -138,7 +138,7 @@ With Azure Resource Manager, you can:
 - Azure Kubernetes Service (AKS). Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers. Orchestration is the task of automating and managing a large number of containers and how they interact.  
   _Similar to Elastic Kubernetes Service ECS (in AWS)_
 
-### describe products available for Networking such as Virtual Network, Load Balancer, VPN Gateway, Application Gateway and Content Delivery Network
+### 2.2.B. describe products available for Networking such as Virtual Network, Load Balancer, VPN Gateway, Application Gateway and Content Delivery Network
 
 **Azure network services**
 
@@ -156,7 +156,6 @@ With Azure Resource Manager, you can:
 - Azure Application Gateway
 
   - Application Gateway is a layer 7 load balancer. It supports SSL termination, cookie-based session affinity, and round robin for load-balancing traffic.
-
   - _Application Load Balancer in AWS_
 
 - Azure Load Balancer
@@ -170,7 +169,7 @@ With Azure Resource Manager, you can:
   - It is a way to get content to users in their local region to minimize latency.
   - _CloudFront (AWS)_
 
-### describe products available for Storage such as Blob Storage, Disk Storage, File Storage, and Archive Storage
+### 2.2.C. describe products available for Storage such as Blob Storage, Disk Storage, File Storage, and Archive Storage
 
 > https://docs.microsoft.com/en-us/learn/modules/define-core-azure-services-products/9-define-azure-data-categories
 
@@ -238,7 +237,7 @@ With Azure Resource Manager, you can:
 - Create powerful file shares for enterprise workloads, including open-source/Linux: **Azure NetApp Files**
 - File caching for high-performance computing (HPC): **Azure HPC Cache**
 
-### describe products available for Databases such as Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database Migration service
+### 2.2.D. describe products available for Databases such as Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database Migration service
 
 - Cosmos DB
 
@@ -292,7 +291,7 @@ With Azure Resource Manager, you can:
 
 > More on Azure databases: https://azure.microsoft.com/en-gb/product-categories/databases/
 
-### describe the Azure Marketplace and its usage scenarios
+### 2.2.E. describe the Azure Marketplace and its usage scenarios
 
 Azure Marketplace is a service on Azure that helps connect end users with Microsoft partners, independent software vendors (ISVs), and start-ups that are offering their solutions and services, which are optimized to run on Azure.
 
@@ -302,7 +301,7 @@ Using Azure Marketplace, you can provision end-to-end solutions quickly and reli
 
 ## 2.3. Describe some of the solutions available on Azure
 
-### describe Internet of Things (IoT) and products that are available for IoT on Azure such as IoT Hub and IoT Central
+### 2.3.A. describe Internet of Things (IoT) and products that are available for IoT on Azure such as IoT Hub and IoT Central
 
 #### Internet of Things (IoT)]
 
@@ -338,7 +337,7 @@ IoT Central is a fully managed global IoT software as a service (SaaS) solution 
 > https://docs.microsoft.com/en-us/azure/iot-fundamentals/  
 > https://docs.microsoft.com/en-us/azure/iot-fundamentals/iot-services-and-technologies
 
-### describe Big Data and Analytics and products that are available for Big Data and Analytics such as Azure Synapse Analytics, HDInsight, and Azure Databricks
+### 2.3.B. describe Big Data and Analytics and products that are available for Big Data and Analytics such as Azure Synapse Analytics, HDInsight, and Azure Databricks
 
 #### Big data and analytics
 
@@ -376,7 +375,7 @@ Azure Data Lake Analytics is an on-demand analytics job service that simplifies 
 > https://azure.microsoft.com/en-gb/product-categories/analytics/  
 > https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/
 
-### describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio
+### 2.3.C. describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio
 
 #### Artificial Intelligence (AI)
 
@@ -419,7 +418,7 @@ Cognitive services are a collection of domain-specific pre-trained AI models tha
 - Knowledge: Knowledge services create rich knowledge resources that integrate into apps and services.
 - Search: Enable apps and services to harness the power of a web-scale, ad-free search engine. Use search services to find information across billions of web pages, images, videos, and news search results.
 
-### describe Serverless computing and Azure products that are available for serverless computing such as Azure Functions, Logic Apps, and Event Grid
+### 2.3.D. describe Serverless computing and Azure products that are available for serverless computing such as Azure Functions, Logic Apps, and Event Grid
 
 **Serverless computing** is a cloud-hosted execution environment that runs your code but abstracts the underlying hosting environment. You create an instance of the service and you add your code. No infrastructure configuration or maintenance is required, or even allowed.
 
@@ -446,7 +445,7 @@ Event Grid allows you to easily build applications with event-based architecture
 - A fully managed event routing service that allows for uniform event consumption using a publish/subscribe model.
 - _AWS SNS Simple Notification Service_
 
-### describe DevOps solutions available on Azure such as Azure DevOps and Azure DevTest Labs
+### 2.3.E. describe DevOps solutions available on Azure such as Azure DevOps and Azure DevTest Labs
 
 [DevOps](https://azure.microsoft.com/en-gb/solutions/devops/) (Development and Operations) brings together people, processes, and technology, automating software delivery to provide continuous value to your users. Azure DevOps Services allows you to create, build, and release pipelines that provide continuous integration, delivery, and deployment for your applications.
 
@@ -474,14 +473,14 @@ You can create two types of labs: **managed lab types** with Azure Lab Services 
 | Subscription management                          | Service handles allocation of resources within Microsoft subscriptions backing the service. Scaling is automatically handled by the service. | You manage on your own in your own Azure subscription. No autoscaling of subscriptions. |
 | Azure Resource Manager deployment within the lab | Not available                                                                                                                                | Available                                                                               |
 
-### describe the benefits and outcomes of using Azure solutions
+### 2.3.F. describe the benefits and outcomes of using Azure solutions
 
 ## 2.4. Describe Azure management tools
 
 Azure Management tools.  
 There are tools available for the command line, language-specific Software Development Kits (SDKs), developer tools, tools for migration, and many others.
 
-### describe Azure tools such as Azure Portal, Azure PowerShell, Azure CLI and Cloud Shell
+### 2.4.A. describe Azure tools such as Azure Portal, Azure PowerShell, Azure CLI and Cloud Shell
 
 #### Azure portal
 
@@ -511,7 +510,7 @@ Microsoft Azure mobile app allows you to access, manage, and monitor all your Az
 
 Representational State Transfer (REST) APIs are service endpoints that support sets of HTTP operations (methods), which provide create, retrieve, update, or delete access to the service's resources. A REST API defines a set of functions which developers can perform requests and receive responses via HTTP protocol such as GET and POST.
 
-### describe Azure Advisor (https://docs.microsoft.com/en-us/azure/advisor/advisor-overview)
+### 2.4.B. describe Azure Advisor (https://docs.microsoft.com/en-us/azure/advisor/advisor-overview)
 
 Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry and then recommends solutions that can help you improve the cost effectiveness, performance, Reliability (formerly called High availability), and security of your Azure resources.
 

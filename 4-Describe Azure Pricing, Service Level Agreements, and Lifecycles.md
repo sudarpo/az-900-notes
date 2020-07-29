@@ -2,7 +2,7 @@
 
 ## 4.1. Describe Azure subscriptions
 
-### describe an Azure Subscription
+### 4.1.A. describe an Azure Subscription
 
 An Azure subscription is a logical unit of Azure services that links to an Azure account, which is an identity in Azure Active Directory (Azure AD) or in a directory that an Azure AD trusts.
 
@@ -11,7 +11,7 @@ An Azure subscription is a logical unit of Azure services that links to an Azure
   1. **Billing boundary**. This subscription type determines how an Azure account is billed for using Azure. You can create multiple subscriptions for different types of billing requirements, and Azure will generate separate billing reports and invoices for each subscription so that you can organize and manage costs.
   2. **Access control boundary**. Azure will apply access-management policies at the subscription level, and you can create separate subscriptions to reflect different organizational structures. An example is that within a business, you have different departments to which you apply distinct Azure subscription policies. This allows you to manage and control access to the resources that users provision with specific subscriptions.
 
-### describe the uses and options with Azure subscriptions such access control and offer types
+### 4.1.B. describe the uses and options with Azure subscriptions such access control and offer types
 
 Create additional Azure subscriptions to separate:
 
@@ -36,7 +36,7 @@ Create additional Azure subscriptions to separate:
 - **Pay-As-You-Go**. This subscription allows you to pay for what you use by attaching a credit or debit card to your account. Organizations can apply to Microsoft for invoicing privileges.
 - **Member offers**. Your existing membership to certain Microsoft products and services affords you credits for your Azure account and reduced rates on Azure services. For example, member offers are available to Microsoft Visual Studio subscribers, Microsoft Partner Network members, Microsoft BizSpark members, and Microsoft Imagine members.
 
-### describe subscription management using Management groups
+### 4.1.C. describe subscription management using Management groups
 
 The organizing structure for resources in Azure has four levels: management groups, subscriptions, resource groups, and resources.
 
@@ -62,7 +62,7 @@ Management group (https://docs.microsoft.com/en-us/azure/governance/management-g
 
 https://docs.microsoft.com/en-us/azure/cost-management-billing/
 
-### describe options for purchasing Azure products and services
+### 4.2.A. describe options for purchasing Azure products and services
 
 There are three main customer types on which the available purchasing options for Azure products and services is contingent, including:
 
@@ -72,7 +72,7 @@ There are three main customer types on which the available purchasing options fo
 
 > https://azure.microsoft.com/en-gb/pricing/purchase-options/
 
-### describe options around Azure Free account
+### 4.2.B. describe options around Azure Free account
 
 An Azure free account provides subscribers with 12 months of our most popular services, a credit to explore any Azure service for 30 days, and over 25 services are free.
 
@@ -84,7 +84,7 @@ What happens once you use my free credit or I’m at the end of 30 days? We’ll
 
 What happens at the end of the 12 months of free products? For 12 months after you upgrade your account, certain amounts of popular products for compute, networking, storage, and databases are free. After 12 months, any of these products you may be using will continue to run, and you’ll be billed at the standard pay-as-you-go rates.
 
-### describe the factors affecting costs such as resource types, services, locations, ingress and egress traffic
+### 4.2.C. describe the factors affecting costs such as resource types, services, locations, ingress and egress traffic
 
 **Usage meters**
 The meters track the resources' usage, and each meter generates a usage record that is used to calculate your bill.
@@ -132,7 +132,7 @@ No. For example, an Azure SQL database in the same region will not have any addi
 
 Yes. Outbound data transfer is charged at the normal rate and inbound data transfer is free.
 
-### describe Zones for billing purposes
+### 4.2.D. describe Zones for billing purposes
 
 A Zone is a geographical grouping of Azure Regions for billing purposes. the following Zones exist and include the sample regions as listed below:
 
@@ -143,20 +143,20 @@ A Zone is a geographical grouping of Azure Regions for billing purposes. the fol
 
 The term **Zone** is for billing purposes only, and the full-term Availability Zone refers to the failure protection that Azure provides for datacenters.
 
-### describe the Pricing calculator (https://azure.microsoft.com/en-gb/pricing/calculator/)
+### 4.2.E. describe the Pricing calculator (https://azure.microsoft.com/en-gb/pricing/calculator/)
 
 - The Pricing Calculator is a tool that helps you estimate the cost of Azure products.
 - It displays Azure products in categories, and you choose the Azure products you need and configure them according to your specific requirements.
 - Azure then provides a detailed estimate of the costs associated with your selections and configurations.
 - The Pricing Calculator provides estimates, not actual price quotes. Actual prices may vary depending upon the date of purchase, the payment currency you are using, and the type of Azure customer you are.
 
-### describe the Total Cost of Ownership (TCO) calculator (https://azure.microsoft.com/en-gb/pricing/tco/)
+### 4.2.F. describe the Total Cost of Ownership (TCO) calculator (https://azure.microsoft.com/en-gb/pricing/tco/)
 
 - Total Cost of Ownership Calculator is a tool that you use to estimate cost savings you can realize by migrating to Azure.
 - TCO calculator generates a detailed report based on the details you enter and the adjustments you make.
 - The report allows you to compare the costs of your on-premises infrastructure with the costs using Azure products and services to host your infrastructure in the cloud.
 
-### describe best practices for minimizing Azure costs such as performing cost analysis, creating spending limits and quotas, using tags to identify cost owners, using Azure reservations and using Azure Advisor recommendations
+### 4.2.G. describe best practices for minimizing Azure costs such as performing cost analysis, creating spending limits and quotas, using tags to identify cost owners, using Azure reservations and using Azure Advisor recommendations
 
 #### Perform cost analyses
 
@@ -202,7 +202,7 @@ Example: If you have virtual machine workloads that are static and predictable, 
 > Save on infrastructure costs https://docs.microsoft.com/en-us/learn/modules/predict-costs-and-optimize-spending/4-save-on-infrastructure-costs  
 > Save on licensing costs https://docs.microsoft.com/en-us/learn/modules/predict-costs-and-optimize-spending/5-save-on-licensing-costs
 
-### describe Azure Cost Management (https://azure.microsoft.com/services/cost-management)
+### 4.2.H. describe Azure Cost Management (https://azure.microsoft.com/services/cost-management)
 
 https://docs.microsoft.com/en-gb/azure/cost-management-billing/
 
@@ -219,7 +219,7 @@ The main features of the Azure Cost Management toolset include:
 
 ## 4.3. Describe Azure Service Level Agreements (SLAs)
 
-### describe a Service Level Agreement (SLA) (https://azure.microsoft.com/en-gb/support/legal/sla/summary/)
+### 4.3.A. describe a Service Level Agreement (SLA) (https://azure.microsoft.com/en-gb/support/legal/sla/summary/)
 
 - Service-Level Agreements (SLAs) capture the specific terms that define the performance standards that apply to Azure.
 - SLAs describe Microsoft's commitment to providing Azure customers with certain performance standards.
@@ -239,7 +239,7 @@ The main features of the Azure Cost Management toolset include:
 | < 99                      | 25                        |
 | < 95                      | 100                       |
 
-### describe Composite SLAs
+### 4.3.B. describe Composite SLAs
 
 - When combining SLAs across different service offerings, the resultant SLA is a called a **Composite SLA**.
 - The resulting composite SLA can provide higher or lower uptime values, depending on your application architecture.
@@ -252,7 +252,7 @@ Example:
 - App Service Web Apps is 99.95 percent; SQL Database is 99.99 percent.
 - However, the composite SLA value for this application is: `99.95 percent × 99.99 percent = approx 99.94 percent`
 
-### describe how to determine an appropriate SLA for an application
+### 4.3.C. describe how to determine an appropriate SLA for an application
 
 https://docs.microsoft.com/en-gb/learn/modules/explore-azure-service-level-agreements/5-define-application-sla
 
@@ -267,7 +267,7 @@ https://docs.microsoft.com/en-gb/learn/modules/explore-azure-service-level-agree
 
 ## 4.4. Describe service lifecycle in Azure
 
-### describe Public and Private Preview features
+### 4.4.A. describe Public and Private Preview features
 
 - Preview feature: An Azure feature is available to _certain_ Azure customers for evaluation purposes.
 - Public preview: An Azure feature is available to _all_ Azure customers for evaluation purposes.
@@ -281,14 +281,14 @@ Azure Previews
 > https://preview.portal.azure.com/  
 > or any service name which has (Preview)
 
-### describe the term General Availability (GA)
+### 4.4.B. describe the term General Availability (GA)
 
 - A feature released to all Azure customers typically goes to General Availability or GA.
 - It's common for features to move from Azure preview features to GA, based on customer evaluation and feedback.
 
 > https://azure.microsoft.com/en-gb/blog/topics/announcements/
 
-### describe how to monitor feature updates and product changes
+### 4.4.C. describe how to monitor feature updates and product changes
 
 Azure updates page (https://azure.microsoft.com/updates) has information about the latest updates to Azure products, services, and features, as well as product roadmaps and announcements.
 

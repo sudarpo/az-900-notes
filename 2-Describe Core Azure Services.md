@@ -26,11 +26,6 @@ A geography is a discrete market, typically containing two or more regions, that
 - **Platform-provided replication**. Some services such as Geo-Redundant Storage provide automatic replication to the paired region.
 - **Region recovery order**. In the event of a broad outage, recovery of one region is prioritized out of every pair. Applications that are deployed across paired regions are guaranteed to have one of the regions recovered with priority.
 - **Sequential updates**. Planned Azure system updates are rolled out to paired regions sequentially (not at the same time) to minimize downtime, the effect of bugs, and logical failures in the rare event of a bad update.
-
-Additional advantages of region pairs include:
-
-- If there's an extensive Azure outage, one region out of every pair is prioritized to make sure at least one is restored as quick as possible for applications hosted in that region pair.
-- Planned Azure updates are rolled out to paired regions one region at a time to minimize downtime and risk of application outage.
 - Data continues to reside within the same geography as its pair (except for Brazil South) for tax and law enforcement jurisdiction purposes.
 
 > https://docs.microsoft.com/en-us/learn/modules/discuss-core-azure-architectural-components/3-explore-region-pairs  
@@ -51,6 +46,11 @@ Availability Zone features
 - Availability zones allow customers to run mission-critical applications with high availability and low-latency replication.
 - Availability zones are offered as a service within Azure, and to ensure resiliency, there’s a minimum of three separate zones in all enabled regions.
 
+Availability Zones are primarily for VMs, managed disks, load balancers, and SQL databases. Azure services that support Availability Zones fall into two categories:
+
+- Zonal services – you pin the resource to a specific zone (for example, virtual machines, managed disks, IP addresses)
+- Zone-redundant services – platform replicates automatically across zones (for example, zone-redundant storage, SQL Database).
+
 **Availability sets** are a way for you to ensure your application remains online if a high-impact maintenance event is required, or if a hardware failure occurs.
 
 - Availability sets are made up of Update domains (UD) and Fault domains (FD).
@@ -62,6 +62,9 @@ Availability Zone features
 
 - A resource group is a unit of management for your resources in Azure.
 - A container that allows you to aggregate and manage all the resources required for your application in a single manageable unit.
+- All resources must be in a resource group and a resource can only be a member of a single resource group.
+- Many resources can be moved between resource groups with some services having specific limitations or requirements to move.
+- Resource groups can't be nested.
 - Allows you to manage the application collectively over its lifecycle.
 
 Manage and apply the following resources at resource group level:
@@ -96,115 +99,254 @@ With Azure Resource Manager, you can:
 - Apply tags to resources to logically organize all the resources in your subscription.
 - Clarify your organization's billing by viewing costs for a group of resources sharing the same tag.
 
+**Resource Manager template** - A JavaScript Object Notation (JSON) file that defines one or more resources to deploy to a resource group, subscription, management group, or tenant. The template can be used to deploy the resources consistently and repeatedly. See [Template deployment overview](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview).
+
 ### 2.1.E. describe the benefits and usage of core Azure architectural components
 
 ## 2.2. Describe some of the core products available in Azure
 
 ### 2.2.A. describe products available for Compute such as Virtual Machines, Virtual Machine Scale Sets, App Services, Azure Container Instances (ACI) and Azure Kubernetes Service (AKS)
 
-**Azure Compute Services**
+Azure Compute Services
 
-- Azure virtual machines: create and use virtual machines in the cloud.  
-  _Similar to EC2 Instances (AWS)_
+#### Azure virtual machines
 
-- Virtual machine scale sets: Azure compute resource that you can use to deploy and manage a set of identical VMs.  
-  _Similar to Auto Scaling (in AWS)_
+- https://docs.microsoft.com/en-us/azure/virtual-machines/
+- https://docs.microsoft.com/en-us/azure/virtual-machines/linux/
+- https://docs.microsoft.com/en-us/azure/virtual-machines/windows/
+- Create and use virtual machines in the cloud.
+- _Similar to EC2 Instances (AWS)_
+- VM Pricing options:
+  - Pay as you go: Pay for compute capacity by the second, with no long-term commitment or upfront payments.
+  - Reserved VM instances: advanced purchase of VM for 1 or 3 years; up to 72% price savings.
+  - Spot pricing: Purcahse unused compute capacity, up to 90% price savings.
 
-- [App services](https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/9-explore-azure-app-service): quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform.
-  - A fully managed platform for building, deploying and scaling your web apps.
-  - _Similar to Elastic Beanstalk and LightSail (in AWS)_
+#### Virtual machine scale sets
 
-> #### Key features of Azure App Service
->
-> - Multiple languages and frameworks. App Service has first-class support for ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP, or Python. You can also run PowerShell and other scripts or executables as background services.
-> - DevOps optimization. Set up continuous integration and deployment with Azure DevOps, GitHub, BitBucket, Docker Hub, or Azure Container Registry. Promote updates through test and staging environments. Manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
-> - Global scale with high availability. Scale up or out manually or automatically. Host your apps anywhere in Microsoft's global datacenter infrastructure, and the App Service SLA promises high availability.
-> - Connections to SaaS platforms and on-premises data. Choose from more than 50 connectors for enterprise systems (such as SAP), SaaS services (such as Salesforce), and internet services (such as Facebook). Access on-premises data using Hybrid Connections and Azure Virtual Networks.
-> - Security and compliance. App Service is ISO, SOC, and PCI compliant. Authenticate users with Azure Active Directory or with social login (Google, Facebook, Twitter, and Microsoft). Create IP address restrictions and manage service identities.
-> - Application templates. Choose from an extensive list of application templates in the Azure Marketplace, such as WordPress, Joomla, and Drupal.
-> - Visual Studio integration. Dedicated tools in Visual Studio streamline the work of creating, deploying, and debugging.
-> - API and mobile features. App Service provides turn-key CORS support for RESTful API scenarios, and simplifies mobile app scenarios by enabling authentication, offline data sync, push notifications, and more.
-> - Serverless code. Run a code snippet or script on-demand without having to explicitly provision or manage infrastructure, and pay only for the compute time your code actually uses.
+- Azure compute resource that you can use to deploy and manage a set of identical VMs
+- Docs: https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/
+- _Similar to Auto Scaling (in AWS)_
+- Key benefits:
+  - Easy to create and manage multiple VMs.  
+    Easy to maintain a consistent configuration across your environment; all VM instances are created from the same base OS image and configuration; support for Azure Load Balancer (layer 4 traffic) and Azure Application Gateway (layer 7 traffic load balancer).
+  - Provides high availability and application resiliency
+  - Allows your application to automatically scale as resource demand changes
+  - Works at large-scale.  
+    Scale sets support up to 1,000 VM instances. If you create and upload your own custom VM images, the limit is 600 VM instances.
 
-- Functions: are ideal when you're concerned only about the code running your service and not the underlying platform or infrastructure.  
-  _Similar to AWS Lambda_
+**Differences between virtual machines and scale sets**
 
-- Azure Container Instances (ACI).
+| Scenario                           | Manual group of VMs                                                                    | Virtual machine scale set                                                              |
+| ---------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Add additional VM instances        | Manual process to create, configure, and ensure compliance                             | Automatically create from central configuration                                        |
+| Traffic balancing and distribution | Manual process to create and configure Azure load balancer or Application Gateway      | Can automatically create and integrate with Azure load balancer or Application Gateway |
+| High availability and redundancy   | Manually create Availability Set or distribute and track VMs across Availability Zones | Automatic distribution of VM instances across Availability Zones or Availability Sets  |
+| Scaling of VMs                     | Manual monitoring and Azure Automation                                                 | Autoscale based on host metrics, in-guest metrics, Application Insights, or schedule   |
 
-  - Azure Container Instances offers the fastest and simplest way to run a container in Azure without having to manage any virtual machines or adopt any additional services.
-  - It is a PaaS offering that allows you to upload your containers, which it will run for you.
-  - _Similar to Elastic Container Service ECS, and Fargate (in AWS)_
+#### [App services](https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/9-explore-azure-app-service): quickly build, deploy, and scale enterprise-grade web, mobile, and API apps running on any platform.
 
-- Azure Kubernetes Service (AKS). Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers. Orchestration is the task of automating and managing a large number of containers and how they interact.  
-  _Similar to Elastic Kubernetes Service ECS (in AWS)_
+- _Similar to Elastic Beanstalk and LightSail (in AWS)_
+- Docs: https://docs.microsoft.com/en-gb/azure/app-service/
+- Azure App Service is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends.
+- A fully managed platform for building, deploying and scaling your web apps.
+- Host common app service styles, including: web apps; api apps; webjobs; mobile apps;
+
+Key features of Azure App Service
+
+- Multiple languages and frameworks. App Service has first-class support for ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP, or Python. You can also run PowerShell and other scripts or executables as background services.
+- DevOps optimization. Set up continuous integration and deployment with Azure DevOps, GitHub, BitBucket, Docker Hub, or Azure Container Registry. Promote updates through test and staging environments. Manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
+- Global scale with high availability. Scale up or out manually or automatically. Host your apps anywhere in Microsoft's global datacenter infrastructure, and the App Service SLA promises high availability.
+- Connections to SaaS platforms and on-premises data. Choose from more than 50 connectors for enterprise systems (such as SAP), SaaS services (such as Salesforce), and internet services (such as Facebook). Access on-premises data using Hybrid Connections and Azure Virtual Networks.
+- Security and compliance. App Service is ISO, SOC, and PCI compliant. Authenticate users with Azure Active Directory or with social login (Google, Facebook, Twitter, and Microsoft). Create IP address restrictions and manage service identities.
+- Application templates. Choose from an extensive list of application templates in the Azure Marketplace, such as WordPress, Joomla, and Drupal.
+- Visual Studio integration. Dedicated tools in Visual Studio streamline the work of creating, deploying, and debugging.
+- API and mobile features. App Service provides turn-key CORS support for RESTful API scenarios, and simplifies mobile app scenarios by enabling authentication, offline data sync, push notifications, and more.
+- Serverless code. Run a code snippet or script on-demand without having to explicitly provision or manage infrastructure, and pay only for the compute time your code actually uses.
+
+The pricing tier of an App Service plan:
+
+- Shared compute: Free and Shared, the two base tiers, runs an app on the same Azure VM as other App Service apps, including apps of other customers. These tiers allocate CPU quotas to each app that runs on the shared resources, and the resources cannot scale out.
+- Dedicated compute: The Basic, Standard, Premium, and PremiumV2 tiers run apps on dedicated Azure VMs. Only apps in the same App Service plan share the same compute resources. The higher the tier, the more VM instances are available to you for scale-out.
+- Isolated: This tier runs dedicated Azure VMs on dedicated Azure Virtual Networks. It provides network isolation on top of compute isolation to your apps. It provides the maximum scale-out capabilities.
+
+#### Azure Container Instances (ACI)
+
+- Docs: https://docs.microsoft.com/en-us/azure/container-instances/
+- Azure Container Instances offers the fastest and simplest way to run a container in Azure without having to manage any virtual machines or adopt any additional services.
+- It is a PaaS offering that allows you to upload your containers, which it will run for you.
+- Fast startup times: Containers offer significant startup benefits over virtual machines (VMs).
+- _Similar to Elastic Container Service ECS, and Fargate (in AWS)_
+
+#### Azure Kubernetes Service (AKS)
+
+- Docs: https://docs.microsoft.com/en-us/azure/aks/
+- Azure Kubernetes Service (AKS) is a complete orchestration service for containers with distributed architectures and large volumes of containers.
+- Orchestration is the task of automating and managing a large number of containers and how they interact.
+- _Similar to Elastic Kubernetes Service EKS (in AWS)_
 
 ### 2.2.B. describe products available for Networking such as Virtual Network, Load Balancer, VPN Gateway, Application Gateway and Content Delivery Network
 
-**Azure network services**
+Azure network services (https://docs.microsoft.com/en-us/azure/?product=networking)
 
-- Azure Virtual Network
+#### Azure Virtual Network ([VNet](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview))
 
-  - Azure Virtual Network enables many types of Azure resources such as Azure VMs to securely communicate with each other, the internet, and on-premises networks.
-  - A virtual network is scoped to a single region; however, multiple virtual networks from different regions can be connected using virtual network peering.
-  - With Azure Virtual Network you can provide isolation, segmentation, communication with on-premises and cloud resources, routing and filtering of network traffic.
-  - _Virtual Private Cloud (in AWS)_
+- VNet is the fundamental building block for your private network in Azure.
+- Azure Virtual Network enables many types of Azure resources such as Azure VMs to securely communicate with each other, the internet, and on-premises networks.
+- A virtual network is scoped to a single region; however, multiple virtual networks from different regions can be connected using virtual network peering.
+- With Azure Virtual Network you can provide isolation, segmentation, communication with on-premises and cloud resources, routing and filtering of network traffic.
+- _VPC Virtual Private Cloud (in AWS)_
 
-- VPN gateway
+Concepts
 
-  - Connects Azure virtual networks to other Azure virtual networks, or customer on-premises networks (Site To Site). Allows end users to connect to Azure services through VPN tunneling (Point To Site).
+- Address space: When creating a VNet, you must specify a custom private IP address space using public and private (RFC 1918) addresses.
+- Subnets: Subnets enable you to segment the virtual network into one or more sub-networks and allocate a portion of the virtual network's address space to each subnet.
+- Regions: VNet is scoped to a single region/location;
+- Subscription: VNet is scoped to a subscription.
 
-- Azure Application Gateway
+#### VPN Gateway
 
-  - Application Gateway is a layer 7 load balancer. It supports SSL termination, cookie-based session affinity, and round robin for load-balancing traffic.
-  - _Application Load Balancer in AWS_
+- Connects Azure virtual networks to other Azure virtual networks, or customer on-premises networks (Site To Site). Allows end users to connect to Azure services through VPN tunneling (Point To Site).
+- Point-to-site VPN (VPN over SSTP _Secure Socket Tunneling Protocol_): Established between a virtual network and a single computer in your network.
+- Site-to-site VPN (IPsec/IKE VPN tunnel): Established between your on-premises VPN device and an Azure VPN Gateway that is deployed in a virtual network.
+- Each virtual network can have only one VPN gateway.
+- However, you can create multiple connections to the same VPN gateway.
+- When you create multiple connections to the same VPN gateway, all VPN tunnels share the available gateway bandwidth.
 
-- Azure Load Balancer
+#### Azure Application Gateway (https://docs.microsoft.com/en-us/azure/application-gateway/overview)
 
-  - Azure Load Balancer can provide scale for your applications and create high availability for your services.
-  - Azure Load Balancer load-balances traffic at layer 4 (TCP or UDP).
-  - Load Balancer supports inbound and outbound scenarios, provides low latency and high throughput, and scales up to millions of flows for all Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) applications.
-  - _Network Load Balancer (in AWS)_
+- Application Gateway is a layer 7 (Application layer) load balancer. It supports SSL termination, cookie-based session affinity, and round robin for load-balancing traffic.
+- _Application Load Balancer in AWS_
+- Application Gateway can make routing decisions based on additional attributes of an HTTP request, for example URI path or host headers.
 
-- Content Delivery Network: A global content delivery network that delivers audio, video, applications, images, and other files.
-  - It is a way to get content to users in their local region to minimize latency.
-  - _CloudFront (AWS)_
+#### Azure Load Balancer (https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)
+
+- Azure Load Balancer can provide scale for your applications and create high availability for your services.
+- Azure Load Balancer load-balances traffic at layer 4 (_transport layer_ TCP or UDP).
+- Load Balancer supports inbound and outbound scenarios, provides low latency and high throughput, and scales up to millions of flows for all Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) applications.
+- _Network Load Balancer (in AWS)_
+- A **public load balancer** can provide outbound connections for virtual machines (VMs) inside your virtual network. These connections are accomplished by translating their private IP addresses to public IP addresses. Public Load Balancers are used to load balance internet traffic to your VMs.
+- An **internal (or private) load balancer** is used where private IPs are needed at the frontend only. Internal load balancers are used to load balance traffic inside a virtual network. A load balancer frontend can be accessed from an on-premises network in a hybrid scenario.
+- Comparison of Standard Load Balancer vs Basic Load Balancer: https://docs.microsoft.com/en-us/azure/load-balancer/skus
+
+#### Content Delivery Network (CDN)
+
+- A global content delivery network that delivers audio, video, applications, images, and other files.
+- CDN is a distributed network of servers that can efficiently deliver web content to users.
+- CDNs store cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency.
+- _CloudFront (AWS)_
+- Azure Content Delivery Network (CDN) includes four products:
+  - Azure CDN Standard from Microsoft,
+  - Azure CDN Standard from Akamai,
+  - Azure CDN Standard from Verizon, and
+  - Azure CDN Premium from Verizon.
 
 ### 2.2.C. describe products available for Storage such as Blob Storage, Disk Storage, File Storage, and Archive Storage
 
 > https://docs.microsoft.com/en-us/learn/modules/define-core-azure-services-products/9-define-azure-data-categories
 
-**Azure Storage**
+**Azure Storage** https://docs.microsoft.com/en-us/azure/storage/
 
-- Blob Storage
+- Azure Blobs: A massively scalable object store for text and binary data. Also includes support for big data analytics through Data Lake Storage Gen2.
+- Azure Files: Managed file shares for cloud or on-premises deployments.
+- Azure Queues: A messaging store for reliable messaging between application components.
+- Azure Tables: A NoSQL store for schemaless storage of structured data.
+- Azure Disks: Block-level storage volumes for Azure VMs.
 
-  - Azure Blob storage is Microsoft's object storage solution for the cloud. Blob storage is optimized for storing massive amounts of unstructured data, such as text or binary data.
+Each service is accessed through a storage account. To get started, see [Create a storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal).
 
-  - [Azure storage offers different access tiers](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal), which allow you to store blob object data in the most cost-effective manner. The available access tiers include:
+#### Blob Storage [docs-Overview](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview) | [docs-Comparison](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction?toc=/azure/storage/blobs/toc.json)
 
-    - Hot - Optimized for storing data that is accessed frequently.
-    - Cool - Optimized for storing data that is infrequently accessed and stored for at least 30 days.
-    - Archive - Optimized for storing data that is rarely accessed and stored for at least 180 days with flexible latency requirements (on the order of hours). (**Archive Storage**)
+- Azure Blob storage is Microsoft's object storage solution for the cloud. Blob storage is optimized for storing massive amounts of unstructured data, such as text or binary data.
 
-  - [Blob storage](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction) offers three types of resources:
+- [Blob storage](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction) offers three types of resources:
 
-    - The storage account
-      A storage account provides a unique namespace in Azure for your data. Every object that you store in Azure Storage has an address that includes your unique account name. The combination of the account name and the Azure Storage blob endpoint forms the base address for the objects in your storage account.
+  - **The storage account**
+    A storage account provides a unique namespace in Azure for your data. Every object that you store in Azure Storage has an address that includes your unique account name. The combination of the account name and the Azure Storage blob endpoint forms the base address for the objects in your storage account.
 
-    - A container in the storage account
-      A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
+  - **A container** in the storage account
+    A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
 
-    - A blob in a container
-      Azure Storage supports three types of blobs:
+  - **A blob in a container**
+    Azure Storage supports [three types of blobs](https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs):
 
-      - Block blobs store text and binary data. Block blobs are made up of blocks of data that can be managed individually. Block blobs store up to about 4.75 TiB of data. Larger block blobs are available in preview, up to about 190.7 TiB
-      - Append blobs are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from virtual machines.
-      - Page blobs store random access files up to 8 TB in size. Page blobs store virtual hard drive (VHD) files and serve as disks for Azure virtual machines. For more information about page blobs, see Overview of Azure page blobs
+    - **Block blobs** store text and binary data. Block blobs are made up of blocks of data that can be managed individually. Block blobs store up to about 4.75 TiB of data. Larger block blobs are available in preview, up to about 190.7 TiB
+    - **Append blobs** are made up of blocks like block blobs, but are optimized for append operations. Append blobs are ideal for scenarios such as logging data from virtual machines.
+    - **Page blobs** store random access files up to 8 TB in size. Page blobs store virtual hard drive (VHD) files and serve as disks for Azure virtual machines. For more information about page blobs, see Overview of [Azure page blobs](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blob-pageblob-overview?tabs=dotnet).
 
-- Disk Storage / [Azure Managed Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)
+- [Azure storage offers different **access tiers**](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal), which allow you to store blob object data in the most cost-effective manner. The available access tiers include:
 
-  - Disk storage provides disks for virtual machines, applications, and other services to access and use as they need, similar to how they would in on-premises scenarios.
-  - Disk storage allows data to be persistently stored and accessed from an attached virtual hard disk.
-  - [Disk types](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types):
+  - Hot - Optimized for storing data that is accessed frequently.
+  - Cool - Optimized for storing data that is infrequently accessed and stored for at least 30 days.
+  - Archive - Optimized for storing data that is rarely accessed and stored for at least 180 days with flexible latency requirements (on the order of hours). (**Archive Storage**)
+
+- Azure block blob storage offers [two different performance tiers](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-blob-performance-tiers):
+
+  - **Premium**: optimized for high transaction rates and single-digit consistent storage latency. Example workloads: interactive workloads (interactive updates and user feedback); analytics; artificial intelligence; data transformation.
+  - **Standard**: optimized for high capacity and high throughput. Example workloads: backup and disaster recovery datasets; media content; bulk data processing.
+
+**Storage Account overview**
+https://docs.microsoft.com/en-gb/azure/storage/common/storage-account-overview#types-of-storage-accounts
+
+Azure Storage offers several types of storage accounts.
+
+- General-purpose v2 accounts: Basic storage account type for blobs, files, queues, and tables. Recommended for most scenarios using Azure Storage.
+- General-purpose v1 accounts: Legacy account type for blobs, files, queues, and tables. Use general-purpose v2 accounts instead when possible.
+- BlockBlobStorage accounts: Storage accounts with premium performance characteristics for block blobs and append blobs. Recommended for scenarios with high transactions rates, or scenarios that use smaller objects or require consistently low storage latency.
+- FileStorage accounts: Files-only storage accounts with premium performance characteristics. Recommended for enterprise or high performance scale applications.
+- BlobStorage accounts: Legacy Blob-only storage accounts. Use general-purpose v2 accounts instead when possible.
+
+**Azure Storage redundancy**
+
+- Azure Storage always stores multiple copies of your data so that it is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters.
+
+Primary Region redundancy
+
+- Data in an Azure Storage account is always replicated three times in the primary region.
+- Azure Storage offers two options for how your data is replicated in the primary region:
+
+  - Locally redundant storage (LRS)
+    - copies your data synchronously three times within a single physical location in the primary region.
+    - LRS is the least expensive replication option, but is not recommended for applications requiring high availability.
+    - LRS provides at least 99.999999999% (11 nines) durability of objects over a given year.
+  - Zone-redundant storage (ZRS)
+    - copies your data synchronously across three Azure availability zones in the primary region.
+    - For applications requiring high availability, Microsoft recommends using ZRS in the primary region, and also replicating to a secondary region.
+    - ZRS offers durability for Azure Storage data objects of at least 99.9999999999% (12 9's) over a given year.
+
+Secondary Region redundancy
+
+- For applications requiring high availability, you can choose to additionally copy the data in your storage account to a secondary region that is hundreds of miles away from the primary region.
+- Azure Storage offers two options for copying your data to a secondary region:
+
+  - Geo-redundant storage (GRS)
+    - Data is replicated synchronously three times in the primary region using locally redundant storage (LRS), then replicated asynchronously to the secondary region.
+    - GRS offers durability for Azure Storage data objects of at least 99.99999999999999% (16 9's) over a given year.
+  - Geo-zone-redundant storage (GZRS)
+    - Data is replicated synchronously across three Azure availability zones in the primary region using zone-redundant storage (ZRS), then replicated asynchronously to the secondary region.
+    - GZRS is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year.
+
+- With GRS or GZRS, the data in the secondary location isn't available for read or write access unless there is a failover to the secondary region.
+- For read access to the secondary location, configure your storage account to use **read-access** geo-redundant storage (RA-GRS) or **read-access** geo-zone-redundant storage (RA-GZRS).
+- Within the secondary location, data is always replicated synchronously three times using LRS. LRS in the secondary region protects your data against hardware failures.
+
+  > - [Azure Storage redundancy](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+  > - [Use geo-redundancy to design highly available applications](https://docs.microsoft.com/en-us/azure/storage/common/geo-redundant-design)
+  > - [Change how a storage account is replicated](https://docs.microsoft.com/en-us/azure/storage/common/redundancy-migration)
+
+#### Disk Storage / [Azure Managed Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)
+
+- Disk storage provides disks for virtual machines, applications, and other services to access and use as they need, similar to how they would in on-premises scenarios. LRS protects your data against server rack and drive failures.
+- Disk storage allows data to be persistently stored and accessed from an attached virtual hard disk.
+- _AWS Elastic Block Store (EBS)_
+- Benefits of managed disks:
+  - Highly durable and available, 99.999% availability.
+  - Simple and scalable VM deployment.
+  - Integration with availability sets.
+  - Integration with Availability Zones.
+  - Azure Backup support to create a backup job with time-based backups and backup retention policies.
+  - Granular access control using RBAC (Azure Role-based access control).
+  - Upload your vhd - Direct upload makes it easy to transfer your vhd to an Azure managed disk.
+- [Disk types](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types):
 
 | Detail         | Ultra disk                                                                                                                       | Premium SSD                                    | Standard SSD                                                   | Standard HDD                            |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------- | --------------------------------------- |
@@ -214,17 +356,34 @@ With Azure Resource Manager, you can:
 | Max throughput | 2,000 MB/s                                                                                                                       | 900 MB/s                                       | 750 MB/s                                                       | 500 MB/s                                |
 | Max IOPS       | 160,000                                                                                                                          | 20,000                                         | 6,000                                                          | 2,000                                   |
 
-- File Storage
+#### Azure Files / File Storage (https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 
-  - Azure Files enables you to set up highly available network file shares that can be accessed by using the standard Server Message Block (SMB) protocol.
-  - You can also read the files using the REST interface or the storage client libraries.
+- Azure Files enables you to set up highly available network file shares that can be accessed by using the standard Server Message Block (SMB) protocol.
+- Azure file shares can be mounted concurrently by cloud or on-premises deployments of Windows, Linux, and macOS.
+- Additionally, Azure file shares can be cached on Windows Servers with Azure File Sync for fast access near where the data is being used.
+- You can also read the files using the REST interface or the storage client libraries.
+- _AWS FSx for Windows File Server_
 
-- Azure Queue service is used to store and retrieve messages. Queue messages can be up to 64 KB in size, and a queue can contain millions of messages. Queues are generally used to store lists of messages to be processed asynchronously.
+Azure file shares can be used to:
 
-- Azure Table storage stores large amounts of structured data.
-  - The service is a NoSQL datastore which accepts authenticated calls from inside and outside the Azure cloud.
-  - Azure Tables are ideal for storing structured, non-relational data.
-  - You can use Table storage to store and query huge sets of structured, non-relational data, and your tables will scale as demand increases.
+- Replace or supplement on-premises file servers or NAS devices.
+- "Lift and shift" applications: Azure Files makes it easy to "lift and shift" applications to the cloud that expect a file share to store file application or user data.
+- Simplify cloud development, e.g.: shared application settings, via REST API or SMB share; diagnostic share logs, metrics and crash dumps;
+
+#### Azure Queue service (https://docs.microsoft.com/en-us/azure/storage/queues/storage-queues-introduction)
+
+- Queue service is used to store and retrieve messages.
+- Queue messages can be up to 64 KB in size, and a queue can contain millions of messages.
+- Queues are generally used to store lists of messages to be processed asynchronously.
+- _AWS Simple Queue Service (SQS)_
+
+#### Azure Table storage (https://docs.microsoft.com/en-us/azure/storage/tables/table-storage-overview)
+
+- Azure Table storage is a service that stores structured NoSQL data in the cloud, providing a key/attribute store with a schemaless design.
+- Table storage is a NoSQL datastore which accepts authenticated calls from inside and outside the Azure cloud.
+- You can use Table storage to store and query huge sets of structured, non-relational data, and your tables will scale as demand increases.
+- _Amazon DynamoDB (in AWS)_
+- There is now a premium offering for table storage: the Azure Cosmos DB Table API. This API offers throughput-optimized tables, global distribution, and automatic secondary indexes. There are some [feature differences between Table API in Azure Cosmos DB and Azure table storage](https://docs.microsoft.com/en-us/azure/cosmos-db/table-api-faq#table-api-vs-table-storage) and [Benefits of moving to Cosmos DB Table API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-support?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 #### IF YOU WANT TO... USE THIS
 
@@ -239,57 +398,112 @@ With Azure Resource Manager, you can:
 
 ### 2.2.D. describe products available for Databases such as Cosmos DB, Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database Migration service
 
-- Cosmos DB
+https://docs.microsoft.com/en-gb/azure/?product=databases  
+More on Azure databases: https://azure.microsoft.com/en-gb/product-categories/databases/
 
-  - Azure Cosmos DB is a fully managed NoSQL database service for modern app development with guaranteed single-digit millisecond response times and 99.999-per cent availability, backed by SLAs, automatic and instant scalability, and open-source APIs for MongoDB and Cassandra.
-  - It supports schema-less data that lets you build highly responsive and Always On applications to support constantly changing data.
+#### Cosmos DB (https://docs.microsoft.com/en-gb/azure/cosmos-db/)
 
-- Azure SQL Database
+- Azure Cosmos DB is a fully managed NoSQL database service for modern app development with guaranteed single-digit millisecond response times and 99.999-per cent availability, backed by SLAs, automatic and instant scalability, and open-source APIs for MongoDB and Cassandra.
+- It supports schema-less data that lets you build highly responsive and Always On applications to support constantly changing data.
+- Azure Cosmos DB **free tier** makes it easy to get started, develop and test your applications, or even run small production workloads for free. When free tier is enabled on an account, you'll get the first 400 RU/s and 5 GB of storage in the account free. More info: https://docs.microsoft.com/en-gb/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier
+- Key benefits:
+  - Turnkey global distribution. CosmosDB transparently replicates data to any Azure regions at any time, with a click of a button.
+  - Always On. High availability of 99.999% for both reads and writes.
+  - Elastic scalability of throughput and storage, worldwide. Designed with transparent horizontal partitioning and multi-master replication, Cosmos DB offers unprecedented elastic scalability for your writes and reads, all around the globe.
+  - Guaranteed low latency at 99th percentile, worldwide.
+  - Precisely defined, multiple [consistency choices](https://docs.microsoft.com/en-gb/azure/cosmos-db/consistency-levels).
+  - No schema or index management.
+  - Battle tested database service, a foundational service in Azure, and used by many of Microsoft's products for mission critical applications at global scale.
+  - Ubiquitous regional presence, available in all Azure regions worldwide.
+  - Secure by default and enterprise ready; encrypted at rest and in transit, row level authorization, and adheres to strict security standards.
+  - Significant TCO savings; fully managed service.
+  - Industry leading comprehensive SLAs; 99.999% high availability, read and write latency at the 99th percentile, guaranteed throughput, and consistency.
+  - Globally distributed operational analytics and AI with natively built-in Apache Spark.
+  - Develop applications on Cosmos DB using popular Open Source Software (OSS) APIs, i.e. Cassandra, MongoDB, Gremlin, and Azure Table Storage.
 
-  - Azure SQL Database is a relational database as a service (DaaS) based on the latest stable version of Microsoft SQL Server database engine.
-  - Options:
-    - Single database (Hyperscale storage (up to 100TB), serverless compute, easy management);
-    - Elastic pool (resource sharing for cost optimization, simplified performance management);
-    - Database server (access management, backup management, business continuity management)
+#### Azure SQL (https://docs.microsoft.com/en-gb/azure/azure-sql/)
 
-- Azure SQL Managed Instance
+Azure SQL family of SQL Server database engine products in the cloud:
 
-  - The broadest SQL Server compatibility on a fully managed service streamlines app modernisation with minimal code changes.
-  - Lift and shift ready.
-  - Native virtual network support
-  - Fully managed service
+- Azure SQL Database,
+- Azure SQL Managed Instance, and
+- SQL Server on Azure VM.
 
-- Azure SQL Server on Azure Virtual Machines
+> https://docs.microsoft.com/en-gb/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview  
+> https://docs.microsoft.com/en-gb/azure/azure-sql/database/features-comparison
 
-  - Best for migrations and applications requiring OS-level access.
-  - Lift and shift ready.
-  - Expansive SQL Server and OS version support
-  - Automated manageability features for SQL Server
+#### Azure SQL Database (https://docs.microsoft.com/en-gb/azure/azure-sql/database/sql-database-paas-overview)
 
-- Azure Database for MySQL
+- Azure SQL Database is a relational _database as a service_ (DaaS) based on the latest stable version of Microsoft SQL Server database engine.
+- Best for modern cloud applications that want to use the latest stable SQL Server features and have time constraints in development and marketing.
+- A fully managed SQL Server database engine, based on the latest stable Enterprise Edition of SQL Server.
+- Deployment options:
+  - **Single database** (Hyperscale storage (up to 100TB), serverless compute, easy management);
+  - **Elastic pool** (resource sharing for cost optimization, simplified performance management);
+  - Database server (access management, backup management, business continuity management)
 
-  - Fully managed database that supports the latest MySQL community editions.
-  - Azure Database for MySQL is easy to set up, manage and scale.
-  - It automates the management and maintenance of your infrastructure and database server, including routine updates, backups and security.
-  - Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MySQL database service, or migrate MySQL workloads to the cloud.
+#### Azure SQL Managed Instance
 
-- Azure Database for PostgreSQL
+- The broadest SQL Server compatibility on a fully managed service streamlines app modernisation with minimal code changes.
+- Lift and shift ready.
+- Best for new applications or existing on-premises applications that want to use the latest stable SQL Server features and that are migrated to the cloud with minimal changes.
+- Native virtual network support
+- Fully managed service, Platform-as-a-Service (PaaS)
 
-  - Build scalable, secure and fully managed enterprise-ready apps on open-source PostgreSQL, scale out single-node PostgreSQL with high performance or migrate PostgreSQL and Oracle workloads to the cloud.
+#### Azure SQL Server on Azure Virtual Machines
 
-- Azure Database for MariaDB
+- Best for migrations and applications requiring OS-level access.
+- Rapid development and test scenarios when you do not want to buy on-premises non-production SQL Server hardware.
+- Infrastructure-as-a-Service (IaaS)
+- Lift and shift ready
+- Expansive SQL Server and OS version support
+- Automated manageability features for SQL Server
 
-  - Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MariaDB database service
+#### Azure Database for MySQL (https://docs.microsoft.com/en-gb/azure/mysql/)
 
-- [Azure Database Migration service](https://docs.microsoft.com/en-us/azure/dms/resource-scenario-status)
+- Fully managed database that supports the latest MySQL community editions.
+- Azure Database for MySQL is easy to set up, manage and scale.
+- It automates the management and maintenance of your infrastructure and database server, including routine updates, backups and security.
+- Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MySQL database service, or migrate MySQL workloads to the cloud.
 
-  - The Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime (online migrations).
-  - The service uses the Microsoft Data Migration Assistant to generate assessment reports that provide recommendations to help guide you through required changes prior to performing a migration.
-  - [Supported sources](https://docs.microsoft.com/en-us/azure/dms/resource-scenario-status), e.g. SQL Server, RDS SQL, MongoDB, MySQL, RDS MySQL, PostgreSQL, RDS PostgreSQL, Oracle.
+#### Azure Database for PostgreSQL (https://docs.microsoft.com/en-gb/azure/postgresql/)
 
-- Azure Cache for Redis: An in-memory–based, distributed caching service that provides a high-performance store typically used to offload nontransactional work from a database.
+- Build scalable, secure and fully managed enterprise-ready apps on open-source PostgreSQL.
+- Scale out single-node PostgreSQL with high performance or migrate PostgreSQL and Oracle workloads to the cloud.
+- Two deployment options: Single Server and Hyperscale (Citus).
+- Single Server deployment option delivers:
+  - Built-in high availability with no additional cost (99.99% SLA)
+  - Predictable performance, using inclusive pay-as-you-go pricing
+  - Vertical scale as needed within seconds
+  - Monitoring and alerting to assess your server
+  - Enterprise-grade security and compliance
+  - Secured to protect sensitive data at-rest and in-motion
+  - Automatic backups and point-in-time-restore for up to 35 days
+  - Three pricing tiers: Basic, General Purpose, and Memory Optimized.
+- Hyperscale (Citus) cluster
+  - Hyperscale (Citus) is a new deployment option for Azure Database for PostgreSQL that scales out Postgres horizontally. A Hyperscale (Citus) database cluster is a group of nodes that are running Postgres, including 1 coordinator node and 2 or more worker nodes.
+  - Hyperscale (Citus) has a minimum database cluster size of 3 nodes: 1 coordinator node and 2 worker nodes. Maximum cluster can scale out to 100s of nodes.
+  - The Hyperscale (Citus) deployment option delivers:
+    - Horizontal scaling across multiple machines using sharding
+    - Query parallelization across these servers for faster responses on large datasets
+    - Excellent support for multi-tenant applications, real time operational analytics, and high throughput transactional workloads
 
-> More on Azure databases: https://azure.microsoft.com/en-gb/product-categories/databases/
+#### Azure Database for MariaDB (https://docs.microsoft.com/en-gb/azure/mariadb/)
+
+- Deliver high availability and elastic scaling to open-source mobile and web apps with a managed community MariaDB database service.
+- is based on the MariaDB community edition (available under the GPLv2 license) database engine, version 10.2 and 10.3.
+
+#### [Azure Database Migration service](https://docs.microsoft.com/en-gb/azure/dms/)
+
+- The Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime (online migrations).
+- The service uses the Microsoft [Data Migration Assistant](https://aka.ms/dma) to generate assessment reports that provide recommendations to help guide you through required changes prior to performing a migration.
+- [Supported sources and migration scenarios](https://docs.microsoft.com/en-us/azure/dms/resource-scenario-status), e.g. SQL Server, RDS SQL, MongoDB, MySQL, RDS MySQL, PostgreSQL, RDS PostgreSQL, Oracle.
+
+#### Azure Cache for Redis (https://docs.microsoft.com/en-gb/azure/azure-cache-for-redis/)
+
+- An in-memory–based, distributed caching service that provides a high-performance store typically used to offload nontransactional work from a database.
+- With Azure Cache for Redis, performance is improved by copying frequently accessed data to in-memory storage instead of being loaded from disk by a database.
+- a secure, dedicated Redis cache, managed by Microsoft, hosted on Azure, and accessible to any application within or outside of Azure.
 
 ### 2.2.E. describe the Azure Marketplace and its usage scenarios
 
@@ -303,7 +517,7 @@ Using Azure Marketplace, you can provision end-to-end solutions quickly and reli
 
 ### 2.3.A. describe Internet of Things (IoT) and products that are available for IoT on Azure such as IoT Hub and IoT Central
 
-#### Internet of Things (IoT)]
+#### Internet of Things (IoT)
 
 Internet of Things (IoT) is the ability for devices to garner and then relay information for data analysis.
 
@@ -316,7 +530,10 @@ An IoT device is typically made up of a circuit board with sensors attached that
 - An accelerometer in an elevator.
 - Presence sensors in a room.
 
-#### IoT Hub
+> https://docs.microsoft.com/en-us/azure/iot-fundamentals/  
+> https://docs.microsoft.com/en-us/azure/iot-fundamentals/iot-services-and-technologies
+
+#### IoT Hub https://docs.microsoft.com/en-gb/azure/iot-hub/
 
 Azure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages.
 
@@ -326,7 +543,7 @@ Azure IoT Hub is a managed service hosted in the cloud that acts as a central me
 - IoT Hub monitoring helps you maintain the health of your solution by tracking events such as device creation, device failures, and device connections.
 - Use Azure IoT platform services such as Azure IoT Hub and the Azure IoT device SDKs to build a custom IoT solution from scratch.
 
-#### IoT Central
+#### IoT Central https://docs.microsoft.com/en-gb/azure/iot-central/
 
 IoT Central is a fully managed global IoT software as a service (SaaS) solution that makes it easy to connect, monitor, and manage your IoT assets at scale.
 
@@ -334,8 +551,16 @@ IoT Central is a fully managed global IoT software as a service (SaaS) solution 
 - provides seamless device connectivity and management.
 - IoT Central uses application templates to create solutions.
 
-> https://docs.microsoft.com/en-us/azure/iot-fundamentals/  
-> https://docs.microsoft.com/en-us/azure/iot-fundamentals/iot-services-and-technologies
+#### IoT Edge https://docs.microsoft.com/en-gb/azure/iot-edge/
+
+Azure IoT Edge extends IoT Hub. Analyze device data locally instead of in the cloud to send less data to the cloud, react to events quickly, and operate offline.
+
+- Azure IoT Edge moves cloud analytics and custom business logic to devices so that your organization can focus on business insights instead of data management.
+- Scale out your IoT solution by packaging your business logic into standard containers, then you can deploy those containers to any of your devices and monitor it all from the cloud.
+- Azure IoT Edge is made up of three components:
+  - **IoT Edge modules** are containers that run Azure services, third-party services, or your own code. Modules are deployed to IoT Edge devices and execute locally on those devices.
+  - The **IoT Edge runtime** runs on each IoT Edge device and manages the modules deployed to each device.
+  - A **cloud-based interface** enables you to remotely monitor and manage IoT Edge devices.
 
 ### 2.3.B. describe Big Data and Analytics and products that are available for Big Data and Analytics such as Azure Synapse Analytics, HDInsight, and Azure Databricks
 
@@ -422,14 +647,15 @@ Cognitive services are a collection of domain-specific pre-trained AI models tha
 
 **Serverless computing** is a cloud-hosted execution environment that runs your code but abstracts the underlying hosting environment. You create an instance of the service and you add your code. No infrastructure configuration or maintenance is required, or even allowed.
 
-#### Azure Functions
+#### Azure Functions (https://docs.microsoft.com/en-us/azure/azure-functions/)
 
-- Azure Functions are ideal when you're only concerned with the code running your service and not the underlying platform or infrastructure.
-- Azure Functions are commonly used when you need to perform work in response to an event—often via a REST request, timer, or message from another Azure service—and when that work can be completed quickly, within seconds or less.
-- scale automatically,
-- charges accrue only when a function is triggered,
-- stateless
-- _AWS Lambda_
+- Azure Functions is a serverless compute service that lets you run event-triggered code without having to explicitly provision or manage infrastructure.
+- Functions are ideal when you're only concerned with the code running your service and not the underlying platform or infrastructure.
+- Functions are commonly used when you need to perform work in response to an event—often via a REST request, timer, or message from another Azure service—and when that work can be completed quickly, within seconds or less.
+- Scale automatically,
+- Charges accrue only when a function is triggered,
+- Stateless
+- _Similar to AWS Lambda_
 
 #### Azure Logic Apps (https://docs.microsoft.com/en-gb/azure/logic-apps/)
 
@@ -474,6 +700,9 @@ You can create two types of labs: **managed lab types** with Azure Lab Services 
 | Azure Resource Manager deployment within the lab | Not available                                                                                                                                | Available                                                                               |
 
 ### 2.3.F. describe the benefits and outcomes of using Azure solutions
+
+https://docs.microsoft.com/en-us/learn/modules/intro-to-data-in-azure/2-benefits-of-using-azure-to-store-data
+https://docs.microsoft.com/en-us/learn/modules/intro-to-data-in-azure/4-comparison-azure-and-on-prem-storage
 
 ## 2.4. Describe Azure management tools
 

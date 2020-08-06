@@ -568,36 +568,50 @@ Azure IoT Edge extends IoT Hub. Analyze device data locally instead of in the cl
 
 https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/4-explore-big-data-analytics
 
-#### Azure Synapse Analytics
+#### Azure Synapse Analytics (https://docs.microsoft.com/en-gb/azure/synapse-analytics/sql-data-warehouse/) | https://docs.microsoft.com/en-gb/azure/synapse-analytics/overview-what-is
 
 Azure Synapse Analytics (formerly Azure SQL Data Warehouse) is a limitless analytics service that brings together enterprise data warehousing and big data analytics.
 
 - Cloud-based Enterprise Data Warehouse (EDW) that uses Massively Parallel Processing (MPP) to quickly run complex queries across petabytes of data.
 - _Similar to AWS Redshift_
+- Azure Synapse has four components:
+  - Synapse SQL: Complete T-SQL based analytics – Generally Available
+    - SQL pool (pay per DWU provisioned)
+    - SQL on-demand (pay per TB processed) (preview)
+  - Spark: Deeply integrated Apache Spark (preview)
+  - Synapse Pipelines: Hybrid data integration (preview)
+  - Studio: Unified user experience. (preview)
 
-#### HDInsight
+#### HDInsight (https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-overview)
 
-Azure HDInsight is a fully managed, open-source analytics service for enterprises.
-
+- Azure HDInsight is a managed Apache Hadoop service that lets you run Apache Spark, Apache Hive, Apache Kafka, Apache HBase, and more in the cloud.
+- Azure HDInsight is a fully managed, open-source analytics service in the cloud for enterprises.
 - It is a cloud service that makes it easier, faster, and more cost-effective to process massive amounts of data.
-- run popular open-source frameworks and create cluster types such as Apache Spark, Apache Hadoop, Apache Kafka, Apache HBase, Apache Storm, Machine Learning Services.
+- HDInsight run popular open-source frameworks and create cluster types such as Apache Spark, Apache Hadoop, Apache Kafka, Apache HBase, Apache Storm, Machine Learning Services, Apache Interactive Query.
 - supports a broad range of scenarios such as extraction, transformation, and loading (ETL); data warehousing; machine learning; and IoT.
 - _Similar to AWS EMR (Elastic MapReduce)_
 
-#### Azure Databricks
+What is **Apache Hadoop** in Azure HDInsight?  
+ Apache Hadoop was the original open-source framework for distributed processing and analysis of big data sets on clusters. The Hadoop ecosystem includes related software and utilities, including Apache Hive, Apache HBase, Spark, Kafka, and many others.
+
+#### Azure Databricks (https://docs.microsoft.com/en-us/azure/databricks/)
 
 - Big data analytics and AI with optimised Apache Spark.
 - A fully managed, fast, easy and collaborative Apache Spark based analytics platform optimised for Azure.
 - _Similar to AWS EMR (Elastic MapReduce)_
 
-#### Azure Data Lake Analytics
+#### Azure Data Lake Analytics (https://docs.microsoft.com/en-gb/azure/data-lake-analytics/ | https://azure.microsoft.com/en-gb/services/data-lake-analytics/)
 
-Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data. Instead of deploying, configuring, and tuning hardware, you write queries to transform your data and extract valuable insights.
-
+- Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data.
+- Instead of deploying, configuring, and tuning hardware, you write queries to transform your data and extract valuable insights.
+- The analytics service can handle jobs of any scale instantly by setting the dial for how much power you need.
+- You only pay for your job when it is running, making it cost-effective.
 - _Similar to AWS Kinesis Analytics_
 
 > More info on big data and analytics.  
 > https://azure.microsoft.com/en-gb/product-categories/analytics/  
+> https://docs.microsoft.com/en-gb/azure/?product=analytics  
+> https://docs.microsoft.com/en-gb/azure/data-lake-analytics/data-lake-analytics-overview  
 > https://docs.microsoft.com/en-us/azure/architecture/data-guide/big-data/
 
 ### 2.3.C. describe Artificial Intelligence (AI) and products that are available for AI such as Azure Machine Learning Service and Studio
@@ -609,10 +623,12 @@ Machine Learning is a data science technique that allows computers to use existi
 - Using machine learning, computers learn without being explicitly programmed.
 - Forecasts or predictions from machine learning can make apps and devices smarter.
 
-#### Azure Machine Learning Service
+#### Azure Machine Learning Service (https://docs.microsoft.com/en-gb/azure/machine-learning/)
 
-The Azure Machine Learning service provides a cloud-based environment you can use to develop, train, test, deploy, manage, and track machine learning models.  
-The Azure Machine Learning service can auto-generate a model and auto-tune it for you. It will let you start training on your local machine, and then scale out to the cloud. When you have the right model, you can easily deploy it in a container such as Docker in Azure.
+- The Azure Machine Learning service provides a cloud-based environment you can use to develop, train, test, deploy, manage, and track machine learning models.
+- The Azure Machine Learning service can auto-generate a model and auto-tune it for you. It will let you start training on your local machine, and then scale out to the cloud. When you have the right model, you can easily deploy it in a container such as Docker in Azure.
+
+Compare Azure Machine Learning vs Machine Learning Studio (classic)
 
 > https://docs.microsoft.com/en-gb/azure/machine-learning/compare-azure-ml-to-studio-classic
 
@@ -631,17 +647,43 @@ The Azure Machine Learning service can auto-generate a model and auto-tune it fo
 | Automated model training and hyperparameter tuning | Not supported                                    | [Supported in the SDK and visual workspace](concept-automated-ml.md)                                                                                   |
 | Data drift detection                               | Not supported                                    | [Supported in SDK and visual workspace](how-to-monitor-datasets.md)                                                                                    |
 
-#### Azure Cognitive Services
+The [machine learning model](https://docs.microsoft.com/en-gb/azure/machine-learning/concept-azure-machine-learning-architecture) workflow generally follows this sequence:
+
+1. Train
+   - Develop machine learning training scripts in Python, R, or with the visual designer.
+   - Create and configure a compute target.
+   - Submit the scripts to a configured compute target to run in that environment. During training, the scripts can read from or write to datastores. The logs and output produced during training are saved as runs in the workspace and grouped under experiments.
+2. Package - After a satisfactory run is found, register the persisted model in the model registry.
+3. Validate - Query the experiment for logged metrics from the current and past runs. If the metrics don't indicate a desired outcome, loop back to step 1 and iterate on your scripts.
+4. Deploy - Develop a scoring script that uses the model and Deploy the model as a web service in Azure, or to an IoT Edge device.
+5. Monitor - Monitor for data drift between the training dataset and inference data of a deployed model. When necessary, loop back to step 1 to retrain the model with new training data.
+
+#### Azure Cognitive Services (https://docs.microsoft.com/en-gb/azure/cognitive-services/)
+
+> https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/5-explore-artificial-intelligence  
+> https://azure.microsoft.com/en-gb/services/#ai-machine-learning
 
 Cognitive services are a collection of domain-specific pre-trained AI models that can be customized with your data. They are categorized broadly into vision, speech, language, and search.
 
-> https://azure.microsoft.com/en-gb/services/#ai-machine-learning
+- Azure Cognitive Services are APIs, SDKs, and services available to help developers build intelligent applications without having direct AI or data science skills or knowledge.
+- Azure Cognitive Services enable developers to easily add cognitive features into their applications.
+- The goal of Azure Cognitive Services is to help developers create applications that can see, hear, speak, understand, and even begin to reason. - The catalog of services within Azure Cognitive Services can be categorized into five main pillars - Vision, Speech, Language, Web Search, and Decision.
 
-- Vision: Vision makes it possible for apps and services to accurately identify and analyze content within images and videos.
-- Speech: Speech services can convert spoken language into text, or produce natural-sounding speech from text using standard (or customizable) voice fonts.
-- Language: Language services can understand the meaning of unstructured text or recognize the speaker’s intent.
+[Five categories](https://docs.microsoft.com/en-gb/learn/modules/identify-azure-solutions/5-explore-artificial-intelligence) are:
+
 - Knowledge: Knowledge services create rich knowledge resources that integrate into apps and services.
+- Language: Language services can understand the meaning of unstructured text or recognize the speaker’s intent.
 - Search: Enable apps and services to harness the power of a web-scale, ad-free search engine. Use search services to find information across billions of web pages, images, videos, and news search results.
+- Speech: Speech services can convert spoken language into text, or produce natural-sounding speech from text using standard (or customizable) voice fonts.
+- Vision: Vision makes it possible for apps and services to accurately identify and analyze content within images and videos.
+
+https://docs.microsoft.com/en-gb/azure/cognitive-services/cognitive-services-and-machine-learning
+
+- Decision: Build apps that surface recommendations for informed and efficient decision-making.
+- Language: Allow your apps to process natural language with pre-built scripts, evaluate sentiment and learn how to recognize what users want.
+- Search: Add Bing Search APIs to your apps and harness the ability to comb billions of webpages, images, videos, and news with a single API call.
+- Speech: Convert speech into text and text into natural-sounding speech. Translate from one language to another and enable speaker verification and recognition.
+- Vision: Recognize, identify, caption, index, and moderate your pictures, videos, and digital ink content.
 
 ### 2.3.D. describe Serverless computing and Azure products that are available for serverless computing such as Azure Functions, Logic Apps, and Event Grid
 

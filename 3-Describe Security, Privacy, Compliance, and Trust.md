@@ -126,7 +126,7 @@ At this layer, the focus is on limiting network connectivity across all your res
 
 - **Authorization**. Authorization is the process of _establishing what level of access_ an authenticated person or service has. It specifies what data they're allowed to access and what they can do with it.
 
-### 3.2.B. describe Azure Active Directory
+### 3.2.B. describe Azure Active Directory (https://docs.microsoft.com/en-us/azure/active-directory/)
 
 Azure Active Directory is a Microsoft cloud-based identity and access management service. Azure AD helps employees of an organization sign in and access resources:
 
@@ -140,7 +140,7 @@ Azure AD provides services such as:
 - Application management. You can manage your cloud and on-premises apps using Azure AD Application Proxy, single sign-on, the My apps portal (also referred to as Access panel), and SaaS apps.
 - Business to business (B2B) identity services. Manage your guest users and external partners while maintaining control over your own corporate data
 - Business-to-customer (B2C) identity services. Customize and control how users sign up, sign in, and manage their profiles when using your apps with services.
-- Device management. Manage how your cloud or on-premises devices access your corporate data.
+- [Device management](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview). Manage how your cloud or on-premises devices access your corporate data.
 
 Azure AD is intended for:
 
@@ -151,6 +151,31 @@ Azure AD is intended for:
 Single sign-on with Azure Active Directory
 
 By leveraging Azure AD for single sign-on you'll also have the ability to combine multiple data sources into an intelligent security graph. This security graph enables the ability to provide threat analysis and real-time identity protection to all accounts in Azure AD, including accounts that are synchronized from your on-premises AD. By using a centralized identity provider, you'll have centralized the security controls, reporting, alerting, and administration of your identity infrastructure.
+
+#### Domain Services https://docs.microsoft.com/en-us/azure/active-directory-domain-services/overview
+
+- Azure Active Directory Domain Services (Azure AD DS) provides managed domain services such as domain join, group policy, lightweight directory access protocol (LDAP), and Kerberos / NTLM authentication.
+- You use these domain services without the need to deploy, manage, and patch domain controllers (DCs) in the cloud.
+
+#### Devices Identity https://docs.microsoft.com/en-us/azure/active-directory/devices/overview
+
+- Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere through these devices.
+- Device identity management is the foundation for device-based Conditional Access. With device-based Conditional Access policies, you can ensure that access to resources in your environment is only possible with managed devices.
+
+#### Application Management https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/what-is-application-management
+
+- Azure AD must be configured to integrate with an application. In other words, it needs to know what applications are using it as an identity system. The process of keeping Azure AD aware of these applications, and how it should handle them, is known as **application management**.
+- You manage applications on the Enterprise applications blade located in the Manage section of the Azure Active Directory portal.
+
+#### Identity Protection https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/
+
+Identity Protection is a tool that allows organizations to accomplish three key tasks:
+
+- Automate the detection and remediation of identity-based risks.
+- Investigate risks using data in the portal.
+- Export risk detection data to third-party utilities for further analysis.
+
+Azure AD Identity Protection helps you manage the roll-out of Azure Multi-Factor Authentication (MFA) registration by configuring a Conditional Access policy to require MFA registration no matter what modern authentication app you are signing in to.
 
 ### 3.2.C. describe Azure Multi-Factor Authentication
 
